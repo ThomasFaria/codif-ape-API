@@ -6,8 +6,11 @@ WORKDIR /api
 # copy the requirements list
 COPY ./requirements.txt /code/requirements.txt
 
-# install all the requirements
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY ./import_corpus.sh /code/import_corpus.sh
+
+# install all the requirements and import corpus
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
+    ./code/import_corpus.sh
 
 # copy the main code of fastapi
 COPY ./app /api/app
