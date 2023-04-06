@@ -1,10 +1,19 @@
 import os
 import mlflow
-import pandas as pd
+from typing import List
 
+from pydantic import BaseModel
 from fastapi import FastAPI
 
 codification_ape_app = FastAPI()
+
+
+class Liasse(BaseModel):
+    text_description: str
+    type_: str
+    nature: str
+    surface: str
+    event: str
 
 
 @codification_ape_app.get("/")
@@ -22,20 +31,55 @@ def show_welcome_page():
 def get_code_APE(
     text_feature: str, type_liasse: str, nature: str, surface: str, event: str, k: int
 ):
-    df = pd.DataFrame(
-        columns=["text_feature", "type_liasse", "nature", "surface", "event"]
-    )
-    df.loc[0] = pd.Series(
-        {
-            "text_feature": text_feature,
-            "type_liasse": type_liasse,
-            "nature": nature,
-            "surface": surface,
-            "event": event,
-        }
-    )
+    query = {
+        "query": {
+            "TEXT_FEATURE": [text_feature],
+            "AUTO": [type_liasse],
+            "NAT_SICORE": [nature],
+            "SURF": [surface],
+            "EVT_SICORE": [event],
+        },
+        "k": k,
+    }
+
     model = get_model()
-    res = model.predict(df)
+    res = model.predict(query)
+    return res
+
+
+@codification_ape_app.post("/liasse")
+def post_code_APE(liasse: Liasse):
+    query = {
+        "query": {
+            "TEXT_FEATURE": [liasse.text_description],
+            "AUTO": [liasse.type_],
+            "NAT_SICORE": [liasse.nature],
+            "SURF": [liasse.surface],
+            "EVT_SICORE": [liasse.event],
+        },
+        "k": k,
+    }
+
+    model = get_model()
+    res = model.predict(query)
+    return res
+
+
+@codification_ape_app.post("/liasses")
+def get_list_code_APE(liasses: List[Liasse], k: int):
+    query = {
+        "query": {
+            "TEXT_FEATURE": [liasse.text_description for liasse in liasses],
+            "AUTO": [liasse.type_ for liasse in liasses],
+            "NAT_SICORE": [liasse.nature for liasse in liasses],
+            "SURF": [liasse.surface for liasse in liasses],
+            "EVT_SICORE": [liasse.event for liasse in liasses],
+        },
+        "k": k,
+    }
+
+    model = get_model()
+    res = model.predict(query)
     return res
 
 
