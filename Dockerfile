@@ -8,9 +8,10 @@ COPY ./requirements.txt /code/requirements.txt
 
 COPY ./import_corpus.sh /code/import_corpus.sh
 
+# pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
 # install all the requirements and import corpus
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
-    ./code/import_corpus.sh
+RUN ls
+# ./code/import_corpus.sh
 
 # copy the main code of fastapi
 COPY ./app /api/app
