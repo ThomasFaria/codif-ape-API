@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 python - <<'END_SCRIPT'
 import nltk
 nltk.download('stopwords')
