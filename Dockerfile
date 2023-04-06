@@ -4,14 +4,13 @@ FROM python:3.10
 WORKDIR /api
 
 # copy the requirements list
-COPY ./requirements.txt /code/requirements.txt
+COPY /requirements.txt /code/requirements.txt
 
-COPY ./import_corpus.sh /code/import_corpus.sh
+COPY /import_corpus.sh /code/import_corpus.sh
 
-# pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
 # install all the requirements and import corpus
-RUN echo $(ls -1)
-# ./code/import_corpus.sh
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt && \
+    /code/import_corpus.sh
 
 # copy the main code of fastapi
 COPY ./app /api/app
