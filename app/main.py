@@ -29,7 +29,12 @@ def show_welcome_page():
 
 @codification_ape_app.get("/liasse")
 def get_code_APE(
-    text_feature: str, type_liasse: str, nature: str, surface: str, event: str, k: int
+    text_feature: str,
+    type_liasse: str | None = None,
+    nature: str | None = None,
+    surface: str | None = None,
+    event: str | None = None,
+    k: int = 2,
 ):
     query = {
         "query": {
@@ -44,7 +49,7 @@ def get_code_APE(
 
     model = get_model()
     res = model.predict(query)
-    return res
+    return res[0][0][0].replace("__label__", "")
 
 
 @codification_ape_app.post("/liasse")
@@ -62,7 +67,7 @@ def post_code_APE(liasse: Liasse):
 
     model = get_model()
     res = model.predict(query)
-    return res
+    return res[0][0][0].replace("__label__", "")
 
 
 @codification_ape_app.post("/liasses")
@@ -80,7 +85,7 @@ def get_list_code_APE(liasses: List[Liasse], k: int):
 
     model = get_model()
     res = model.predict(query)
-    return res
+    return res[0][0][0].replace("__label__", "")
 
 
 def get_model():
