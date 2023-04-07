@@ -8,26 +8,12 @@ from pydantic import BaseModel
 ml_models = {}
 
 
-def get_model():
-    model_name: str = os.getenv("MLFLOW_MODEL_NAME")
-    model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
-
-    try:
-        model = mlflow.pyfunc.load_model(
-            model_uri=f"models:/{model_name}/{model_version}"
-        )
-        return model
-    except Exception as error:
-        raise Exception(
-            f"Failed to fetch model {model_name} version \
-            {model_version}: {str(error)}"
-        ) from error
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    model_name: str = os.getenv("MLFLOW_MODEL_NAME")
+    model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     # Load the ML model
-    ml_models["fastText"] = get_model
+    ml_models["fastText"] = get_model(model_name, model_version)
     yield
     # Clean up the ML models and release the resources
     ml_models.clear()
@@ -83,3 +69,16 @@ async def get_code_APE(
 
     res = ml_models["fastText"].predict(query)
     return res[0][0][0].replace("__label__", "")
+
+
+def get_model(model_name: str, model_version: str):
+    try:
+        model = mlflow.pyfunc.load_model(
+            model_uri=f"models:/{model_name}/{model_version}"
+        )
+        return model
+    except Exception as error:
+        raise Exception(
+            f"Failed to fetch model {model_name} version \
+            {model_version}: {str(error)}"
+        ) from error
