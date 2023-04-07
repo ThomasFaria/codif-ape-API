@@ -17,6 +17,16 @@ libs = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """
+    Asynchronous context manager for managing the lifespan of the API.
+
+    This context manager is used to load the ML model and other resources
+    when the API starts and clean them up when the API stops.
+
+    Args:
+        app (FastAPI): The FastAPI application.
+    """
+
     model_name: str = os.getenv("MLFLOW_MODEL_NAME")
     model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     # Load the ML model
@@ -29,6 +39,21 @@ async def lifespan(app: FastAPI):
 
 
 class Liasse(BaseModel):
+    """
+    Pydantic BaseModel for representing the input data for the API.
+
+    This BaseModel defines the structure of the input data required
+    for the API's "/liasse" endpoint.
+
+    Attributes:
+        text_description (str): The text description.
+        type_ (str): The type of liasse.
+        nature (str): The nature of the liasse.
+        surface (str): The surface of the liasse.
+        event (str): The event of the liasse.
+
+    """
+
     text_description: str
     type_: str
     nature: str
@@ -65,6 +90,21 @@ async def get_code_APE(
 ):
     """
     Get code APE.
+
+    This endpoint accepts input data as query parameters and uses the loaded
+    ML model to predict the code APE based on the input data.
+
+    Args:
+        text_feature (str): The text feature.
+        type_liasse (str, optional): The type of liasse. Defaults to None.
+        nature (str, optional): The nature of the liasse. Defaults to None.
+        surface (str, optional): The surface of the liasse. Defaults to None.
+        event: (str, optional): Event of the liasse. Optional.
+        nb_echos_max (int): Maximum number of echoes to consider. Default is 5.
+        prob_min (float): Minimum probability threshold. Default is 0.01.
+
+    Returns:
+        dict: Response containing APE codes.
     """
 
     query = preprocess_query(
@@ -78,7 +118,4 @@ async def get_code_APE(
     return response
 
 
-# TODO: Creer un utils.py qui contient toutes les fonction python,
-# ici garder les fonctions le
-# simple possible. Et garder que les fonctions de l'API
 # TODO: mettre des fonction globales
