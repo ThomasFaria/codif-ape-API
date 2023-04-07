@@ -1,3 +1,6 @@
+"""
+Main file for the API.
+"""
 import os
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -5,7 +8,8 @@ from pathlib import Path
 import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
-from utils import get_model, preprocess_query, process_response
+
+from app.utils import get_model, preprocess_query, process_response
 
 ml_models = {}
 libs = {}
