@@ -1,11 +1,36 @@
 import os
-from typing import List
+from contextlib import asynccontextmanager
 
 import mlflow
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-codification_ape_app = FastAPI()
+ml_models = {}
+
+
+def get_model():
+    model_name: str = os.getenv("MLFLOW_MODEL_NAME")
+    model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
+
+    try:
+        model = mlflow.pyfunc.load_model(
+            model_uri=f"models:/{model_name}/{model_version}"
+        )
+        return model
+    except Exception as error:
+        raise Exception(
+            f"Failed to fetch model {model_name} version \
+            {model_version}: {str(error)}"
+        ) from error
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Load the ML model
+    ml_models["fastText"] = get_model
+    yield
+    # Clean up the ML models and release the resources
+    ml_models.clear()
 
 
 class Liasse(BaseModel):
@@ -14,6 +39,9 @@ class Liasse(BaseModel):
     nature: str
     surface: str
     event: str
+
+
+codification_ape_app = FastAPI(lifespan=lifespan)
 
 
 @codification_ape_app.get("/")
@@ -28,7 +56,7 @@ def show_welcome_page():
 
 
 @codification_ape_app.get("/liasse")
-def get_code_APE(
+async def get_code_APE(
     text_feature: str,
     type_liasse: str | None = None,
     nature: str | None = None,
@@ -47,58 +75,5 @@ def get_code_APE(
         "k": k,
     }
 
-    model = get_model()
-    res = model.predict(query)
+    res = ml_models["fastText"].predict(query)
     return res[0][0][0].replace("__label__", "")
-
-
-@codification_ape_app.post("/liasse")
-def post_code_APE(liasse: Liasse, k: int = 2):
-    query = {
-        "query": {
-            "TEXT_FEATURE": [liasse.text_description],
-            "AUTO": [liasse.type_],
-            "NAT_SICORE": [liasse.nature],
-            "SURF": [liasse.surface],
-            "EVT_SICORE": [liasse.event],
-        },
-        "k": k,
-    }
-
-    model = get_model()
-    res = model.predict(query)
-    return res[0][0][0].replace("__label__", "")
-
-
-@codification_ape_app.post("/liasses")
-def get_list_code_APE(liasses: List[Liasse], k: int):
-    query = {
-        "query": {
-            "TEXT_FEATURE": [liasse.text_description for liasse in liasses],
-            "AUTO": [liasse.type_ for liasse in liasses],
-            "NAT_SICORE": [liasse.nature for liasse in liasses],
-            "SURF": [liasse.surface for liasse in liasses],
-            "EVT_SICORE": [liasse.event for liasse in liasses],
-        },
-        "k": k,
-    }
-
-    model = get_model()
-    res = model.predict(query)
-    return res[0][0][0].replace("__label__", "")
-
-
-def get_model():
-    model_name: str = os.getenv("MLFLOW_MODEL_NAME")
-    model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
-
-    try:
-        model = mlflow.pyfunc.load_model(
-            model_uri=f"models:/{model_name}/{model_version}"
-        )
-        return model
-    except Exception as error:
-        raise Exception(
-            f"Failed to fetch model {model_name} version \
-            {model_version}: {str(error)}"
-        ) from error
