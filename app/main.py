@@ -2,10 +2,10 @@ import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-import mlflow
 import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
+from utils import get_model, preprocess_query, process_response
 
 ml_models = {}
 libs = {}
@@ -56,47 +56,25 @@ async def get_code_APE(
     nature: str | None = None,
     surface: str | None = None,
     event: str | None = None,
-    k: int = 2,
+    nb_echos_max: int = 5,
+    prob_min: float = 0.01,
 ):
     """
     Get code APE.
     """
-    query = {
-        "query": {
-            "TEXT_FEATURE": [text_feature],
-            "AUTO": [type_liasse],
-            "NAT_SICORE": [nature],
-            "SURF": [surface],
-            "EVT_SICORE": [event],
-        },
-        "k": k,
-    }
 
-    res = ml_models["fastText"].predict(query)
+    query = preprocess_query(
+        text_feature, type_liasse, nature, surface, event, nb_echos_max
+    )
 
-    output_dict = {
-        rank_pred
-        + 1: {
-            "code": res[0][0][rank_pred].replace("__label__", ""),
-            "probabilite": float(res[1][0][rank_pred]),
-            "libelle": libs["lib"][
-                res[0][0][rank_pred].replace("__label__", "")
-            ],
-        }
-        for rank_pred in range(query["k"])
-    }
-    print(output_dict)
-    return output_dict
+    predictions = ml_models["fastText"].predict(query)
+
+    response = process_response(predictions, nb_echos_max, prob_min, libs)
+
+    return response
 
 
-def get_model(model_name: str, model_version: str):
-    try:
-        model = mlflow.pyfunc.load_model(
-            model_uri=f"models:/{model_name}/{model_version}"
-        )
-        return model
-    except Exception as error:
-        raise Exception(
-            f"Failed to fetch model {model_name} version \
-            {model_version}: {str(error)}"
-        ) from error
+# TODO: Creer un utils.py qui contient toutes les fonction python,
+# ici garder les fonctions le
+# simple possible. Et garder que les fonctions de l'API
+# TODO: mettre des fonction globales
