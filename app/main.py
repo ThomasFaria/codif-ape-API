@@ -44,8 +44,11 @@ class Liasse(BaseModel):
 codification_ape_app = FastAPI(lifespan=lifespan)
 
 
-@codification_ape_app.get("/")
+@codification_ape_app.get("/", tags=["Welcome"])
 def show_welcome_page():
+    """
+    Show welcome page with model name and version.
+    """
     model_name: str = os.getenv("MLFLOW_MODEL_NAME")
     model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     return {
@@ -55,7 +58,7 @@ def show_welcome_page():
     }
 
 
-@codification_ape_app.get("/liasse")
+@codification_ape_app.get("/liasse", tags=["Liasse"])
 async def get_code_APE(
     text_feature: str,
     type_liasse: str | None = None,
@@ -64,6 +67,9 @@ async def get_code_APE(
     event: str | None = None,
     k: int = 2,
 ):
+    """
+    Get code APE from ML model.
+    """
     query = {
         "query": {
             "TEXT_FEATURE": [text_feature],
