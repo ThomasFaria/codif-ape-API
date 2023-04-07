@@ -1,11 +1,14 @@
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import mlflow
+import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 ml_models = {}
+libs = {}
 
 
 @asynccontextmanager
@@ -14,6 +17,8 @@ async def lifespan(app: FastAPI):
     model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     # Load the ML model
     ml_models["fastText"] = get_model(model_name, model_version)
+    libs["lib"] = yaml.safe_load(Path("app/libs.yaml").read_text())
+
     yield
     # Clean up the ML models and release the resources
     ml_models.clear()
@@ -54,7 +59,7 @@ async def get_code_APE(
     k: int = 2,
 ):
     """
-    Get code APE from ML model.
+    Get code APE.
     """
     query = {
         "query": {
@@ -68,7 +73,20 @@ async def get_code_APE(
     }
 
     res = ml_models["fastText"].predict(query)
-    return res[0][0][0].replace("__label__", "")
+
+    output_dict = {
+        rank_pred
+        + 1: {
+            "code": res[0][0][rank_pred].replace("__label__", ""),
+            "probabilite": float(res[1][0][rank_pred]),
+            "libelle": libs["lib"][
+                res[0][0][rank_pred].replace("__label__", "")
+            ],
+        }
+        for rank_pred in range(query["k"])
+    }
+    print(output_dict)
+    return output_dict
 
 
 def get_model(model_name: str, model_version: str):
