@@ -11,9 +11,6 @@ from pydantic import BaseModel
 
 from app.utils import get_model, preprocess_query, process_response
 
-ml_models = {}
-libs = {}
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -26,16 +23,17 @@ async def lifespan(app: FastAPI):
     Args:
         app (FastAPI): The FastAPI application.
     """
+    global model, libs
 
     model_name: str = os.getenv("MLFLOW_MODEL_NAME")
     model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     # Load the ML model
-    ml_models["fastText"] = get_model(model_name, model_version)
-    libs["lib"] = yaml.safe_load(Path("app/libs.yaml").read_text())
+    model = get_model(model_name, model_version)
+    libs = yaml.safe_load(Path("app/libs.yaml").read_text())
 
     yield
     # Clean up the ML models and release the resources
-    ml_models.clear()
+    model.clear()
 
 
 class Liasse(BaseModel):
@@ -111,7 +109,7 @@ async def get_code_APE(
         text_feature, type_liasse, nature, surface, event, nb_echos_max
     )
 
-    predictions = ml_models["fastText"].predict(query)
+    predictions = model.predict(query)
 
     response = process_response(predictions, nb_echos_max, prob_min, libs)
 

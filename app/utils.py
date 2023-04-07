@@ -112,7 +112,7 @@ def process_response(
         + 1: {
             "code": predictions[0][0][rank_pred].replace("__label__", ""),
             "probabilite": float(predictions[1][0][rank_pred]),
-            "libelle": libs["lib"][
+            "libelle": libs[
                 predictions[0][0][rank_pred].replace("__label__", "")
             ],
         }
