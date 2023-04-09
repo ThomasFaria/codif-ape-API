@@ -104,7 +104,7 @@ def process_response(
     k = nb_echos_max
     if predictions[1][0][-1] < prob_min:
         k = np.min(
-            [np.argmax(not (predictions[1][0] > prob_min)), nb_echos_max]
+            [np.argmax(np.logical_not(predictions[1][0] > prob_min)), nb_echos_max]
         )
 
     output_dict = {
