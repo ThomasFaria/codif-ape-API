@@ -66,8 +66,10 @@ class Liasses(BaseModel):
         schema_extra = {
             "example": {
                 "text_description": [
-                    "LOUEUR MEUBLE NON PROFESSIONNEL EN RESIDENCE DE\
-                     SERVICES (CODE APE 6820A Location de logements)"
+                    (
+                        "LOUEUR MEUBLE NON PROFESSIONNEL EN RESIDENCE DE "
+                        "SERVICES (CODE APE 6820A Location de logements)"
+                    )
                 ],
                 "type_": ["I"],
                 "nature": [""],
