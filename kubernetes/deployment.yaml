@@ -35,7 +35,7 @@ spec:
               value: us-east-1
             # env var for setting mlflow model registry server
             - name: MLFLOW_TRACKING_URI
-              value: https://projet-ape-357108.user.lab.sspcloud.fr
+              value: https://projet-ape-529043.user.lab.sspcloud.fr
             # env var for setting models uri which will be deployed
             - name: MLFLOW_MODEL_NAME
               value: test
