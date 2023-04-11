@@ -92,8 +92,10 @@ def preprocess_batch(query: dict, nb_echos_max: int) -> dict:
         matches = df.index[df["text_description"].isna()].to_list()
         raise HTTPException(
             status_code=400,
-            detail=f"The text_description is missing for some liasses.\
-                 See line(s): {*matches,}",
+            detail=(
+                "The text_description is missing for some liasses."
+                f"See line(s): {*matches,}"
+            ),
         )
 
     list_ok = [
@@ -220,17 +222,24 @@ def check_format_features(df, feature, regex, list_ok=None):
                 matches.append(i)
 
     errors = {
-        "type_": f"The format of type_liasse is incorrect. Accepted values are\
-            :{list_ok}. See line(s) : {*matches,}",
-        "nature": f"The format of nature is incorrect. The nature is an \
-            integer between 00 and 99. See line(s) : {*matches,}",
-        "surface": f"The format of surface is incorrect. Accepted values are: \
-            {list_ok}. See line(s) : {*matches,}",
-        "event": f"The format of event is incorrect. The event value is an \
-            integer between 00 and 99 plus the letter P, M or F. Example: \
-                '01P'. See line(s) : {*matches,}",
+        "type_": (
+            "The format of type_liasse is incorrect. Accepted values are "
+            f":{list_ok}. See line(s) : {*matches,}"
+        ),
+        "nature": (
+            "The format of nature is incorrect. The nature is an "
+            f"integer between 00 and 99. See line(s) : {*matches,}"
+        ),
+        "surface": (
+            "The format of surface is incorrect. Accepted values are: "
+            f"{list_ok}. See line(s) : {*matches,}"
+        ),
+        "event": (
+            f"The format of event is incorrect. The event value is an "
+            "integer between 00 and 99 plus the letter P, M or F. Example: "
+            f"'01P'. See line(s) : {*matches,}"
+        ),
     }
 
-    print(errors[feature])
     if matches:
         raise HTTPException(status_code=400, detail=errors[feature])
