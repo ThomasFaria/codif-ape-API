@@ -45,14 +45,14 @@ class Liasses(BaseModel):
     Pydantic BaseModel for representing the input data for the API.
 
     This BaseModel defines the structure of the input data required
-    for the API's "/liasse" endpoint.
+    for the API's "/predict-batch" endpoint.
 
     Attributes:
-        text_description (str): The text description.
-        type_ (str): The type of liasse.
-        nature (str): The nature of the liasse.
-        surface (str): The surface of the liasse.
-        event (str): The event of the liasse.
+        text_description (List[str]): The text description.
+        type_ (List[str]): The type of liasse.
+        nature (List[str]): The nature of the liasse.
+        surface (List[str]): The surface of the liasse.
+        event (List[str]): The event of the liasse.
 
     """
 
