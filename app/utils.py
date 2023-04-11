@@ -1,5 +1,9 @@
+import re
+
 import mlflow
 import numpy as np
+import pandas as pd
+from fastapi import HTTPException
 from fastapi.responses import JSONResponse
 
 
@@ -79,8 +83,72 @@ def preprocess_query(
     return query
 
 
+def preprocess_batch(query: dict, nb_echos_max: int) -> dict:
+    df = pd.DataFrame(query)
+    df = df.apply(lambda x: x.str.strip())
+    df = df.replace(["null", "", "NA", "NAN", "nan", "None"], np.nan)
+
+    if df["text_description"].isna().any():
+        matches = df.index[df["text_description"].isna()].to_list()
+        raise HTTPException(
+            status_code=400,
+            detail=f"The text_description is missing for some liasses.\
+                 See line(s): {*matches,}",
+        )
+
+    list_ok = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G",
+        "I",
+        "L",
+        "M",
+        "N",
+        "R",
+        "S",
+        "X",
+        "Y",
+        "Z",
+    ]
+    check_format_features(
+        df, "type_", r"^(" + "|".join(list_ok) + r")$", list_ok=list_ok
+    )
+
+    check_format_features(df, "nature", r"^\d{2}$")
+
+    list_ok = ["1", "2", "3", "4"]
+    check_format_features(
+        df, "surface", r"^(" + "|".join(list_ok) + r")$", list_ok=list_ok
+    )
+
+    check_format_features(df, "event", r"^\d{2}[PMF]$")
+
+    df = df.replace(np.nan, "NaN")
+
+    df.rename(
+        columns={
+            "text_description": "TEXT_FEATURE",
+            "type_": "AUTO",
+            "nature": "NAT_SICORE",
+            "surface": "SURF",
+            "event": "EVT_SICORE",
+        },
+        inplace=True,
+    )
+
+    query = {
+        "query": df.to_dict("list"),
+        "k": nb_echos_max,
+    }
+    return query
+
+
 def process_response(
     predictions: tuple,
+    liasse_nb: int,
     nb_echos_max: int,
     prob_min: float,
     libs: dict,
@@ -102,18 +170,25 @@ def process_response(
 
     """
     k = nb_echos_max
-    if predictions[1][0][-1] < prob_min:
+    if predictions[1][liasse_nb][-1] < prob_min:
         k = np.min(
-            [np.argmax(np.logical_not(predictions[1][0] > prob_min)), nb_echos_max]
+            [
+                np.argmax(
+                    np.logical_not(predictions[1][liasse_nb] > prob_min)
+                ),
+                nb_echos_max,
+            ]
         )
 
     output_dict = {
         rank_pred
         + 1: {
-            "code": predictions[0][0][rank_pred].replace("__label__", ""),
-            "probabilite": float(predictions[1][0][rank_pred]),
+            "code": predictions[0][liasse_nb][rank_pred].replace(
+                "__label__", ""
+            ),
+            "probabilite": float(predictions[1][liasse_nb][rank_pred]),
             "libelle": libs[
-                predictions[0][0][rank_pred].replace("__label__", "")
+                predictions[0][liasse_nb][rank_pred].replace("__label__", "")
             ],
         }
         for rank_pred in range(k)
@@ -121,7 +196,8 @@ def process_response(
 
     try:
         response = output_dict | {
-            "IC": output_dict[1]["probabilite"] - float(predictions[1][0][1])
+            "IC": output_dict[1]["probabilite"]
+            - float(predictions[1][liasse_nb][1])
         }
         return response
     except KeyError:
@@ -132,3 +208,29 @@ def process_response(
                 "than the highest prediction probability of the model."
             },
         )
+
+
+def check_format_features(df, feature, regex, list_ok=None):
+    values = df[feature].to_list()
+    matches = []
+
+    for i, value in enumerate(values):
+        if isinstance(value, str):
+            if not re.match(regex, value):
+                matches.append(i)
+
+    errors = {
+        "type_": f"The format of type_liasse is incorrect. Accepted values are\
+            :{list_ok}. See line(s) : {*matches,}",
+        "nature": f"The format of nature is incorrect. The nature is an \
+            integer between 00 and 99. See line(s) : {*matches,}",
+        "surface": f"The format of surface is incorrect. Accepted values are: \
+            {list_ok}. See line(s) : {*matches,}",
+        "event": f"The format of event is incorrect. The event value is an \
+            integer between 00 and 99 plus the letter P, M or F. Example: \
+                '01P'. See line(s) : {*matches,}",
+    }
+
+    print(errors[feature])
+    if matches:
+        raise HTTPException(status_code=400, detail=errors[feature])

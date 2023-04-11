@@ -4,12 +4,18 @@ Main file for the API.
 import os
 from contextlib import asynccontextmanager
 from pathlib import Path
+from typing import List
 
 import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from app.utils import get_model, preprocess_query, process_response
+from app.utils import (
+    get_model,
+    preprocess_batch,
+    preprocess_query,
+    process_response,
+)
 
 
 @asynccontextmanager
@@ -32,11 +38,9 @@ async def lifespan(app: FastAPI):
     libs = yaml.safe_load(Path("app/libs.yaml").read_text())
 
     yield
-    # Clean up the ML models and release the resources
-    model.clear()
 
 
-class Liasse(BaseModel):
+class Liasses(BaseModel):
     """
     Pydantic BaseModel for representing the input data for the API.
 
@@ -52,14 +56,35 @@ class Liasse(BaseModel):
 
     """
 
-    text_description: str
-    type_: str
-    nature: str
-    surface: str
-    event: str
+    text_description: List[str]
+    type_: List[str]
+    nature: List[str]
+    surface: List[str]
+    event: List[str]
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "text_description": [
+                    "LOUEUR MEUBLE NON PROFESSIONNEL EN RESIDENCE DE\
+                     SERVICES (CODE APE 6820A Location de logements)"
+                ],
+                "type_": ["I"],
+                "nature": [""],
+                "surface": [""],
+                "event": ["01P"],
+            }
+        }
 
 
-codification_ape_app = FastAPI(lifespan=lifespan)
+codification_ape_app = FastAPI(
+    lifespan=lifespan,
+    title="Prédiction code APE",
+    description="Application de prédiction pour \
+                                            l'activité principale \
+                                            de l'entreprise (APE)",
+    version="0.0.1",
+)
 
 
 @codification_ape_app.get("/", tags=["Welcome"])
@@ -76,8 +101,8 @@ def show_welcome_page():
     }
 
 
-@codification_ape_app.get("/liasse", tags=["Liasse"])
-async def get_code_APE(
+@codification_ape_app.get("/predict", tags=["Predict"])
+async def predict(
     text_feature: str,
     type_liasse: str | None = None,
     nature: str | None = None,
@@ -87,7 +112,7 @@ async def get_code_APE(
     prob_min: float = 0.01,
 ):
     """
-    Get code APE.
+    Predict code APE.
 
     This endpoint accepts input data as query parameters and uses the loaded
     ML model to predict the code APE based on the input data.
@@ -111,9 +136,38 @@ async def get_code_APE(
 
     predictions = model.predict(query)
 
-    response = process_response(predictions, nb_echos_max, prob_min, libs)
+    response = process_response(predictions, 0, nb_echos_max, prob_min, libs)
 
     return response
 
 
-# TODO: mettre des fonction globales
+@codification_ape_app.post("/predict-batch", tags=["Predict"])
+async def predict_batch(
+    liasses: Liasses,
+    nb_echos_max: int = 5,
+    prob_min: float = 0.01,
+):
+    """
+
+
+    Args:
+
+
+    Returns:
+        dict: Response containing APE codes.
+    """
+
+    #
+    query = preprocess_batch(liasses.dict(), nb_echos_max)
+
+    predictions = model.predict(query)
+
+    response = [
+        process_response(predictions, i, nb_echos_max, prob_min, libs)
+        for i in range(len(predictions[0]))
+    ]
+
+    return response
+
+
+# LOG libellé pré traité
