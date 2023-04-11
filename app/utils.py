@@ -70,6 +70,43 @@ def preprocess_query(
         for v in (type_liasse, nature, surface, event)
     )
 
+    print(surface)
+    list_ok = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G",
+        "I",
+        "L",
+        "M",
+        "N",
+        "R",
+        "S",
+        "X",
+        "Y",
+        "Z",
+    ]
+    check_format_features(
+        [type_liasse],
+        "type_",
+        r"^(" + "|".join(list_ok) + r")$",
+        list_ok=list_ok,
+    )
+
+    check_format_features([nature], "nature", r"^\d{2}$")
+
+    list_ok = ["1", "2", "3", "4"]
+    check_format_features(
+        [surface],
+        "surface",
+        r"^(" + "|".join(list_ok) + r")$",
+        list_ok=list_ok,
+    )
+
+    check_format_features([event], "event", r"^\d{2}[PMF]$")
+
     query = {
         "query": {
             "TEXT_FEATURE": [text_feature],
@@ -116,17 +153,23 @@ def preprocess_batch(query: dict, nb_echos_max: int) -> dict:
         "Z",
     ]
     check_format_features(
-        df, "type_", r"^(" + "|".join(list_ok) + r")$", list_ok=list_ok
+        df["type_"].to_list(),
+        "type_",
+        r"^(" + "|".join(list_ok) + r")$",
+        list_ok=list_ok,
     )
 
-    check_format_features(df, "nature", r"^\d{2}$")
+    check_format_features(df["nature"].to_list(), "nature", r"^\d{2}$")
 
     list_ok = ["1", "2", "3", "4"]
     check_format_features(
-        df, "surface", r"^(" + "|".join(list_ok) + r")$", list_ok=list_ok
+        df["surface"].to_list(),
+        "surface",
+        r"^(" + "|".join(list_ok) + r")$",
+        list_ok=list_ok,
     )
 
-    check_format_features(df, "event", r"^\d{2}[PMF]$")
+    check_format_features(df["event"].to_list(), "event", r"^\d{2}[PMF]$")
 
     df = df.replace(np.nan, "NaN")
 
@@ -212,8 +255,7 @@ def process_response(
         )
 
 
-def check_format_features(df, feature, regex, list_ok=None):
-    values = df[feature].to_list()
+def check_format_features(values, feature, regex, list_ok=None):
     matches = []
 
     for i, value in enumerate(values):
@@ -223,21 +265,21 @@ def check_format_features(df, feature, regex, list_ok=None):
 
     errors = {
         "type_": (
-            "The format of type_liasse is incorrect. Accepted values are "
-            f":{list_ok}. See line(s) : {*matches,}"
+            "The format of type_liasse is incorrect. Accepted values are"
+            f": {list_ok}. See line(s) : {*matches,}"
         ),
         "nature": (
             "The format of nature is incorrect. The nature is an "
-            f"integer between 00 and 99. See line(s) : {*matches,}"
+            f"integer between 00 and 99. See line(s): {*matches,}"
         ),
         "surface": (
             "The format of surface is incorrect. Accepted values are: "
-            f"{list_ok}. See line(s) : {*matches,}"
+            f"{list_ok}. See line(s): {*matches,}"
         ),
         "event": (
             f"The format of event is incorrect. The event value is an "
             "integer between 00 and 99 plus the letter P, M or F. Example: "
-            f"'01P'. See line(s) : {*matches,}"
+            f"'01P'. See line(s): {*matches,}"
         ),
     }
 
