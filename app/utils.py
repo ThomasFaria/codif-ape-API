@@ -66,7 +66,7 @@ def preprocess_query(
 
     """
     type_liasse, nature, surface, event = (
-        "NaN" if v is None else v
+        np.nan if v is None else v
         for v in (type_liasse, nature, surface, event)
     )
 
@@ -106,6 +106,11 @@ def preprocess_query(
     )
 
     check_format_features([event], "event", r"^\d{2}[PMF]$")
+
+    type_liasse, nature, surface, event = (
+        "NaN" if not isinstance(v, str) else v
+        for v in (type_liasse, nature, surface, event)
+    )
 
     query = {
         "query": {
