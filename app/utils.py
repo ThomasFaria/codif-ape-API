@@ -126,6 +126,22 @@ def preprocess_query(
 
 
 def preprocess_batch(query: dict, nb_echos_max: int) -> dict:
+    """
+    Preprocesses a batch of data in a dictionary format for prediction.
+
+    Args:
+        query (dict): A dictionary containing the batch of data.
+        nb_echos_max (int): The maximum number of echoes allowed.
+
+    Returns:
+        dict: A dictionary containing the preprocessed data ready for further
+        processing.
+    Raises:
+        HTTPException: If the 'text_description' field is missing for any
+            liasses in the batch, a HTTPException is raised with a 400
+            status code and a detailed error message.
+    """
+
     df = pd.DataFrame(query)
     df = df.apply(lambda x: x.str.strip())
     df = df.replace(["null", "", "NA", "NAN", "nan", "None"], np.nan)
@@ -260,7 +276,24 @@ def process_response(
         )
 
 
-def check_format_features(values, feature, regex, list_ok=None):
+def check_format_features(
+    values: list, feature: str, regex: str, list_ok: list = None
+) -> None:
+    """
+    Check the format of values for a specific feature using regex pattern.
+
+    Args:
+        values (list): A list of values to be checked.
+        feature (str): The name of the feature being checked.
+        regex (str): The regex pattern used to check the format of values.
+        list_ok (list, optional): A list of accepted values for the feature.
+
+    Raises:
+        HTTPException: If the format of any value in the list does not match
+         the regex pattern, a HTTPException is raised with a
+         400 status code and a detailed error message.
+    """
+
     matches = []
 
     for i, value in enumerate(values):
