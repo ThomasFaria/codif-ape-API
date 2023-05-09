@@ -1,5 +1,5 @@
 # Creating MLflow deployment
-apiVersion: apps/v1
+apiVersion: apps/v0.0.1
 kind: Deployment
 metadata:
   name: codification-ape-model-deployment
@@ -40,7 +40,7 @@ spec:
             - name: MLFLOW_MODEL_NAME
               value: FastText-APE
             - name: MLFLOW_MODEL_VERSION
-              value: "5"
+              value: Staging
           ports:
             - name: http
               containerPort: 8000
