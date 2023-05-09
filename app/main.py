@@ -107,7 +107,7 @@ def show_welcome_page():
         else value
         for key, value in run.data.metrics.items()
     }
-    print(metrics)
+
     return {
         "Message": "Codification de l'APE",
         "Model_name": f"{model_name}",
