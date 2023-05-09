@@ -9,6 +9,7 @@ from typing import List
 import yaml
 from fastapi import FastAPI
 from pydantic import BaseModel
+from mlflow import MlflowClient
 
 from app.utils import (
     get_model,
@@ -94,13 +95,16 @@ def show_welcome_page():
     """
     Show welcome page with model name and version.
     """
+
+    client = MlflowClient()
+    run = client.get_run(model.metadata.run_id)
     model_name: str = os.getenv("MLFLOW_MODEL_NAME")
     model_version: str = os.getenv("MLFLOW_MODEL_VERSION")
     return {
         "Message": "Codification de l'APE",
         "Model_name": f"{model_name}",
         "Model_version": f"{model_version}",
-    }
+    } | {"Metrics": run.data.metrics}
 
 
 @codification_ape_app.get("/predict", tags=["Predict"])
