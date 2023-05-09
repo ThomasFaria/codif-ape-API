@@ -38,9 +38,9 @@ spec:
               value: https://projet-ape-529043.user.lab.sspcloud.fr
             # env var for setting models uri which will be deployed
             - name: MLFLOW_MODEL_NAME
-              value: test
+              value: FastText-APE
             - name: MLFLOW_MODEL_VERSION
-              value: "3"
+              value: Staging
           ports:
             - name: http
               containerPort: 8000
