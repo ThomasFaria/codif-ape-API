@@ -8,8 +8,8 @@ from typing import List
 
 import yaml
 from fastapi import FastAPI
-from pydantic import BaseModel
 from mlflow import MlflowClient
+from pydantic import BaseModel
 
 from app.utils import (
     get_model,
@@ -95,7 +95,6 @@ def show_welcome_page():
     """
     Show welcome page with model name and version.
     """
-
     client = MlflowClient()
     run = client.get_run(model.metadata.run_id)
     model_name: str = os.getenv("MLFLOW_MODEL_NAME")
