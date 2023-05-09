@@ -40,7 +40,7 @@ spec:
             - name: MLFLOW_MODEL_NAME
               value: FastText-APE
             - name: MLFLOW_MODEL_VERSION
-              value: Staging
+              value: "5"
           ports:
             - name: http
               containerPort: 8000
