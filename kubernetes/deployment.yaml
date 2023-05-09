@@ -1,5 +1,5 @@
 # Creating MLflow deployment
-apiVersion: apps/v0.0.1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: codification-ape-model-deployment
