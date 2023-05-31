@@ -4,7 +4,6 @@ import mlflow
 import numpy as np
 import pandas as pd
 from fastapi import HTTPException
-from fastapi.responses import JSONResponse
 
 
 def get_model(model_name: str, model_version: str) -> object:
@@ -230,10 +229,13 @@ def process_response(
         libs (dict): A dictionary containing mapping of codes to labels.
 
     Returns:
-        response (dict or JSONResponse): The processed response as a
-        dictionary or a JSONResponse object containing the
-        predicted results.
+        response (dict): The processed response as a dictionary containing
+        the predicted results.
 
+    Raises:
+        HTTPException: If the minimal probability requested is higher than 
+        the highest prediction probability of the model, a HTTPException 
+        is raised with a 400 status code and a detailed error message.
     """
     k = nb_echos_max
     if predictions[1][liasse_nb][-1] < prob_min:
@@ -267,13 +269,12 @@ def process_response(
         }
         return response
     except KeyError:
-        return JSONResponse(
-            status_code=404,
-            content={
-                "message": "The minimal probability requested is higher "
-                "than the highest prediction probability of the model."
-            },
-        )
+        raise HTTPException(status_code=400, 
+                            detail=(
+                                "The minimal probability requested is "
+                                "higher than the highest prediction "
+                                "probability of the model."
+                           ))
 
 
 def check_format_features(
