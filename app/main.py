@@ -6,6 +6,8 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import List
 
+import numpy as np
+import pandas as pd
 import yaml
 from fastapi import FastAPI
 from mlflow import MlflowClient
@@ -244,12 +246,22 @@ async def eval_batch(
 
     predictions = model.predict(query)
 
-    response = [
-        process_response(predictions, i, 2, libs)
-        for i in range(len(predictions[0]))
-    ]
+    df = pd.DataFrame(
+        [
+            [
+                predictions[1][i][0],
+                np.diff(predictions[1][i])[0] * -1,
+                predictions[0][i][0].replace("__label__", ""),
+            ]
+            for i in range(len(predictions[0][0]))
+        ],
+        columns=["IC", "Probability", "Prediction"],
+    )
 
-    return response
+    df["Code"] = liasses.code
+    df["Result"] = df["Code"] == df["Prediction"]
+
+    return df.to_dict()
 
 
 # LOG libellé pré traité
