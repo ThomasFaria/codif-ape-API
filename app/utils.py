@@ -69,7 +69,6 @@ def preprocess_query(
         for v in (type_liasse, nature, surface, event)
     )
 
-    print(surface)
     list_ok = [
         "A",
         "B",
@@ -233,8 +232,8 @@ def process_response(
         the predicted results.
 
     Raises:
-        HTTPException: If the minimal probability requested is higher than 
-        the highest prediction probability of the model, a HTTPException 
+        HTTPException: If the minimal probability requested is higher than
+        the highest prediction probability of the model, a HTTPException
         is raised with a 400 status code and a detailed error message.
     """
     k = nb_echos_max
@@ -269,12 +268,14 @@ def process_response(
         }
         return response
     except KeyError:
-        raise HTTPException(status_code=400, 
-                            detail=(
-                                "The minimal probability requested is "
-                                "higher than the highest prediction "
-                                "probability of the model."
-                           ))
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "The minimal probability requested is "
+                "higher than the highest prediction "
+                "probability of the model."
+            ),
+        )
 
 
 def check_format_features(
