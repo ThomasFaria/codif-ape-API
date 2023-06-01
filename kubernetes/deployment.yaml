@@ -18,21 +18,6 @@ spec:
           image: thomasfaria/codification-ape-api:latest
           imagePullPolicy: Always
           env:
-            # env var for s3 connexion
-            - name: MLFLOW_S3_ENDPOINT_URL
-              value: https://minio.lab.sspcloud.fr
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: my-s3-creds
-                  key: accessKey
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: my-s3-creds
-                  key: secretKey
-            - name: AWS_DEFAULT_REGION
-              value: us-east-1
             # env var for setting mlflow model registry server
             - name: MLFLOW_TRACKING_URI
               value: https://projet-ape-713513.user.lab.sspcloud.fr
@@ -41,14 +26,7 @@ spec:
               value: FastText-APE
             - name: MLFLOW_MODEL_VERSION
               value: Staging
-          ports:
-            - name: http
-              containerPort: 8000
-              protocol: TCP
           resources:
-            requests:
+            limits:
               memory: "2Gi"
               cpu: "1000m"
-            limits:
-              memory: "5Gi"
-              cpu: "10000m"
