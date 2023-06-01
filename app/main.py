@@ -253,7 +253,7 @@ async def eval_batch(
                 np.diff(predictions[1][i])[0] * -1,
                 predictions[0][i][0].replace("__label__", ""),
             ]
-            for i in range(len(predictions[0][0]))
+            for i in range(len(predictions[0]))
         ],
         columns=["IC", "Probability", "Prediction"],
     )
