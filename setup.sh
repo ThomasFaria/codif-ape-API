@@ -10,9 +10,9 @@ AWS_SECRET_ACCESS_KEY=`vault kv get -field=SECRET_KEY onyxia-kv/projet-ape/s3` &
 unset AWS_SESSION_TOKEN
 
 export MLFLOW_S3_ENDPOINT_URL="https://$AWS_S3_ENDPOINT"
-export MLFLOW_TRACKING_URI=https://projet-ape-529043.user.lab.sspcloud.fr
-export MLFLOW_MODEL_NAME=test
-export MLFLOW_MODEL_VERSION=3
+export MLFLOW_TRACKING_URI=https://projet-ape-713513.user.lab.sspcloud.fr
+export MLFLOW_MODEL_NAME=FastText-APE
+export MLFLOW_MODEL_VERSION=5
 
 python - <<'END_SCRIPT'
 import nltk

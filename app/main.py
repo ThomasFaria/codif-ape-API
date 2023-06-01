@@ -80,6 +80,48 @@ class Liasses(BaseModel):
         }
 
 
+class LiassesEvaluation(BaseModel):
+    """
+    Pydantic BaseModel for representing the input data for the API.
+
+    This BaseModel defines the structure of the input data required
+    for the API's "/evaluation" endpoint.
+
+    Attributes:
+        text_description (List[str]): The text description.
+        type_ (List[str]): The type of liasse.
+        nature (List[str]): The nature of the liasse.
+        surface (List[str]): The surface of the liasse.
+        event (List[str]): The event of the liasse.
+        code (List[str]): The true code of the liasse.
+
+    """
+
+    text_description: List[str]
+    type_: List[str]
+    nature: List[str]
+    surface: List[str]
+    event: List[str]
+    code: List[str]
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "text_description": [
+                    (
+                        "LOUEUR MEUBLE NON PROFESSIONNEL EN RESIDENCE DE "
+                        "SERVICES (CODE APE 6820A Location de logements)"
+                    )
+                ],
+                "type_": ["I"],
+                "nature": [""],
+                "surface": [""],
+                "event": ["01P"],
+                "code": ["6820A"],
+            }
+        }
+
+
 codification_ape_app = FastAPI(
     lifespan=lifespan,
     title="Prédiction code APE",
@@ -178,6 +220,32 @@ async def predict_batch(
 
     response = [
         process_response(predictions, i, nb_echos_max, prob_min, libs)
+        for i in range(len(predictions[0]))
+    ]
+
+    return response
+
+
+@codification_ape_app.post("/evaluation", tags=["Evaluate"])
+async def eval_batch(
+    liasses: LiassesEvaluation,
+):
+    """
+
+
+    Args:
+
+
+    Returns:
+        dict: Response containing APE codes.
+    """
+
+    query = preprocess_batch(liasses.dict(), nb_echos_max=2)
+
+    predictions = model.predict(query)
+
+    response = [
+        process_response(predictions, i, 2, libs)
         for i in range(len(predictions[0]))
     ]
 
