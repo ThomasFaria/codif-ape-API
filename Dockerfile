@@ -1,5 +1,10 @@
 FROM python:3.10
 
+ARG API_USERNAME
+ARG API_PASSWORD
+ENV API_USERNAME ${API_USERNAME}
+ENV API_PASSWORD ${API_PASSWORD}
+
 # set api as the current work dir
 WORKDIR /api
 

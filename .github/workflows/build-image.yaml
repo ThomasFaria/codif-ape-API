@@ -49,6 +49,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            "API_USERNAME=${{ secrets.API_USERNAME }}"
+            "API_PASSWORD=${{ secrets.API_PASSWORD }}"
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
