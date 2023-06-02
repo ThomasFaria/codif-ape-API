@@ -20,7 +20,7 @@ website:
     background: "#A7D5E8"
     right:
     - text: "License"
-      href: website/LICENCE.md
+      href: LICENSE.md
 
 
   navbar:
