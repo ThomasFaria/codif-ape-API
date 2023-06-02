@@ -13,6 +13,8 @@ export MLFLOW_S3_ENDPOINT_URL="https://$AWS_S3_ENDPOINT"
 export MLFLOW_TRACKING_URI=https://projet-ape-713513.user.lab.sspcloud.fr
 export MLFLOW_MODEL_NAME=FastText-APE
 export MLFLOW_MODEL_VERSION=5
+export API_USERNAME=username
+export API_PASSWORD=password
 
 python - <<'END_SCRIPT'
 import nltk

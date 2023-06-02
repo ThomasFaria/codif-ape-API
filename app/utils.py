@@ -1,9 +1,14 @@
+import os
 import re
+from typing import Annotated
 
 import mlflow
 import numpy as np
 import pandas as pd
-from fastapi import HTTPException
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+
+security = HTTPBasic()
 
 
 def get_model(model_name: str, model_version: str) -> object:
@@ -35,6 +40,25 @@ def get_model(model_name: str, model_version: str) -> object:
             f"Failed to fetch model {model_name} version \
             {model_version}: {str(error)}"
         ) from error
+
+
+def get_current_username(
+    credentials: Annotated[HTTPBasicCredentials, Depends(security)]
+):
+    print(credentials.username)
+    print(credentials.password)
+    print(os.getenv("API_USERNAME"))
+    print(os.getenv("API_PASSWORD"))
+
+    if not (credentials.username == os.getenv("API_USERNAME")) or not (
+        credentials.password == os.getenv("API_PASSWORD")
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentification failed",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials.username
 
 
 def preprocess_query(
