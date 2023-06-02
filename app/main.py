@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import yaml
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from mlflow import MlflowClient
 from pydantic import BaseModel
 
@@ -131,6 +132,15 @@ codification_ape_app = FastAPI(
                                             l'activité principale \
                                             de l'entreprise (APE)",
     version="0.0.1",
+)
+
+
+codification_ape_app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
