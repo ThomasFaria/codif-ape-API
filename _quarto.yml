@@ -1,0 +1,73 @@
+project:
+  title: "codif-ape-API"
+  type: website
+  render:
+    - /website/*.qmd
+
+website:
+  page-navigation: true
+  title: "Evaluation of the model"
+  description: "Website for model evaluation"
+  site-url: "https://ThomasFaria.github.io/codif-ape-API/"
+
+  repo-url: "https://github.com/ThomasFaria/codif-ape-API"
+  repo-actions: [edit, issue]
+
+  open-graph: true
+
+  page-footer:
+    left: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    background: "#A7D5E8"
+    right:
+    - text: "License"
+      href: website/LICENCE.md
+
+
+  navbar:
+    background: "#A7D5E8"
+    # logo: "images/logo-INSEE.png"
+    align: center
+    title: false
+    collapse-below: lg
+
+    right:
+      - icon: github
+        href: "https://github.com/ThomasFaria/codif-ape-API"
+        aria-label: GitHub
+
+    left:
+      - text: "Overview"
+        href: website/index.qmd
+      - text: "Methodology"
+        href: website/methodology.qmd
+
+
+  # sidebar:
+  #   - id: ppi
+  #     title: "PPI"
+  #     style: "floating"
+  #     collapse-level: 2
+  #     align: left
+  #     contents:
+  #       - href: ppi.qmd
+  #       - href: post-mortem-ppi.qmd
+
+
+format:
+  html:
+    theme:
+      light: [cosmo, style/styles.scss]
+    reference-location: margin
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    mainfont: "Atkinson Hyperlegible"
+    include-in-header: "style/fontawesome.html"
+
+execute:
+  echo: false
+  warning: false
+
+freeze: auto
+
+editor: visual
