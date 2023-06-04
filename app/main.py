@@ -283,6 +283,7 @@ async def eval_batch(
 
     df["Code"] = liasses.code
     df["Result"] = df["Code"] == df["Prediction"]
+    df["Lib"] = liasses.text_description
 
     return df.to_dict()
 
