@@ -44,8 +44,8 @@ grid = await html`<div style="
               grid-gap: 10px;
             ">
               <div name="a" style="grid-area: a; position: relative;">${viewof quantile}</div>
-              <div name="b" style="grid-area: b; position: relative;"><div class="textstyled">Accuracy: ${Accuracy}</div></div>
-              <div name="c" style="grid-area: c; position: relative;"><div class="textstyled">Seuil: ${Seuil}</div></div>
+              <div name="b" style="grid-area: b; position: relative;">Accuracy: ${Accuracy}</div>
+              <div name="c" style="grid-area: c; position: relative;">Seuil: ${Seuil}</div>
               <div name="d" style="grid-area: d; position: relative;">${distrib}</div>
             </div>`
 ```
