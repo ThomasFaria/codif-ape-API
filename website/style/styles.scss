@@ -2,3 +2,20 @@
 $primary: #b83352 ;
 
 /*-- scss:rules --*/
+
+.textstyled {
+    left: 0px;
+    font-family: Roboto;
+    font-weight:bold;
+    font-size:15px;
+    color:white;
+    border-radius: 15px;
+    background: #1D3867;
+    height: 15px;
+    margin: auto;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
