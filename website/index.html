@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Evaluation of the model - codif-ape-API</title>
+<title>Evaluation of the model - Evaluation d’un modèle</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
 
-<meta property="og:title" content="Evaluation of the model - codif-ape-API">
+<meta property="og:title" content="Evaluation of the model - Evaluation d’un modèle">
 <meta property="og:site-name" content="Evaluation of the model">
 </head>
 
@@ -118,10 +118,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li class="nav-item">
     <a class="nav-link active" href="../website/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Overview</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../website/methodology.html" rel="" target="">
- <span class="menu-text">Methodology</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -146,13 +142,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a>
-  <ul class="collapse">
-  <li><a href="#wrong-prediction-new-page" id="toc-wrong-prediction-new-page" class="nav-link" data-scroll-target="#wrong-prediction-new-page">Wrong prediction (new page)</a></li>
-  </ul></li>
-  <li><a href="#data-stuffs" id="toc-data-stuffs" class="nav-link" data-scroll-target="#data-stuffs">Data stuffs</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">Imports</a></li>
+  <li><a href="#connexion-à-lapi-et-ajout-des-données" id="toc-connexion-à-lapi-et-ajout-des-données" class="nav-link active" data-scroll-target="#connexion-à-lapi-et-ajout-des-données">Connexion à l’API et ajout des données</a></li>
+  <li><a href="#distribution-des-indices-de-confiances" id="toc-distribution-des-indices-de-confiances" class="nav-link" data-scroll-target="#distribution-des-indices-de-confiances">Distribution des indices de confiances</a></li>
+  <li><a href="#liste-des-mauvaises-predictions" id="toc-liste-des-mauvaises-predictions" class="nav-link" data-scroll-target="#liste-des-mauvaises-predictions">Liste des mauvaises predictions</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ThomasFaria/codif-ape-API/edit/main/website/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ThomasFaria/codif-ape-API/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -161,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">codif-ape-API</h1>
+<h1 class="title">Evaluation d’un modèle</h1>
 </div>
 
 
@@ -176,8 +168,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<section id="connexion-à-lapi-et-ajout-des-données" class="level2">
+<h2 class="anchored" data-anchor-id="connexion-à-lapi-et-ajout-des-données">Connexion à l’API et ajout des données</h2>
 <div class="cell">
 <div class="sourceCode cell-code hidden" id="cb1" data-startfrom="7" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 6;"><span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>viewof username <span class="op">=</span> <span class="fu">secret</span>(<span class="st">"apiKey"</span><span class="op">,</span> {</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span></span>
@@ -203,35 +195,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="24" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 23;"><span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>viewof csvfile <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">file</span>({</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`__Observations to evaluate__ 📁 ([Example here](https://raw.githubusercontent.com/ThomasFaria/codif-ape-API/main/website/exemples/exemple.csv))`</span><span class="op">,</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">accept</span><span class="op">:</span> <span class="st">".csv"</span><span class="op">,</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="23" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 22;"><span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>viewof csvfile <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">file</span>({</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">label</span><span class="op">:</span> <span class="fu">md</span><span class="vs">`__Observations to evaluate__ 📁 ([Example here](https://raw.githubusercontent.com/ThomasFaria/codif-ape-API/main/website/exemples/exemple.csv))`</span><span class="op">,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">accept</span><span class="op">:</span> <span class="st">".csv"</span><span class="op">,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">required</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+</section>
+<section id="distribution-des-indices-de-confiances" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-des-indices-de-confiances">Distribution des indices de confiances</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="32" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="cf">await</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="vs">              background: #fff;</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="vs">              margin: 0;</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas: </span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a b c'</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="vs">                'd d d'</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>viewof quantile<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;&lt;div class="textstyled"&gt;Accuracy: </span><span class="sc">${</span>Accuracy<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;&lt;div class="textstyled"&gt;Seuil: </span><span class="sc">${</span>Seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="d" style="grid-area: d; position: relative;"&gt;</span><span class="sc">${</span>distrib<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="33" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 32;"><span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="cf">await</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="vs">              background: #fff;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="vs">              margin: 0;</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas: </span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a b c'</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="vs">                'd d d'</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>viewof quantile<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;&lt;div class="textstyled"&gt;Accuracy: </span><span class="sc">${</span>Accuracy<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;&lt;div class="textstyled"&gt;Seuil: </span><span class="sc">${</span>Seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="d" style="grid-area: d; position: relative;"&gt;</span><span class="sc">${</span>distrib<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
 
@@ -239,14 +234,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="53" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 52;"><span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>viewof quantile <span class="op">=</span> <span class="fu">slider</span>({</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> (v) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>v<span class="sc">}</span><span class="vs">%`</span><span class="op">,</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> <span class="st">"Taux de classification automatique"</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="54" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 53;"><span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>viewof quantile <span class="op">=</span> <span class="fu">slider</span>({</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="dt">value</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> (v) <span class="kw">=&gt;</span> <span class="vs">`</span><span class="sc">${</span>v<span class="sc">}</span><span class="vs">%`</span><span class="op">,</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">description</span><span class="op">:</span> <span class="st">"Taux de classification automatique"</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-5" data-nodetype="declaration">
 
@@ -254,22 +249,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="64" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>distrib <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  <span class="dt">round</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">screen</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="fl">0.7</span><span class="op">,</span></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>      processed_response<span class="op">,</span></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">binX</span>(</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span></span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">x</span><span class="op">:</span> <span class="st">"IC"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"Result"</span><span class="op">,</span> <span class="dt">mixBlendMode</span><span class="op">:</span> <span class="st">"multiply"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> }</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([Seuil]<span class="op">,</span> { <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> })</span>
-<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="65" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 64;"><span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>distrib <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">round</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">screen</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="fl">0.7</span><span class="op">,</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>      processed_response<span class="op">,</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">binX</span>(</span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">x</span><span class="op">:</span> <span class="st">"IC"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"Result"</span><span class="op">,</span> <span class="dt">mixBlendMode</span><span class="op">:</span> <span class="st">"multiply"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([Seuil]<span class="op">,</span> { <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> })</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-6" data-nodetype="declaration">
 
@@ -277,12 +272,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="83" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 82;"><span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>Seuil <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(</span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  ) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="84" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 83;"><span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>Seuil <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>  ) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-7" data-nodetype="declaration">
 
@@ -290,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="92" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>Accuracy <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(d3<span class="op">.</span><span class="fu">mean</span>(subset<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)) <span class="op">*</span> <span class="dv">10000</span>) <span class="op">/</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="93" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>Accuracy <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(d3<span class="op">.</span><span class="fu">mean</span>(subset<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)) <span class="op">*</span> <span class="dv">10000</span>) <span class="op">/</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-8" data-nodetype="declaration">
 
@@ -298,34 +293,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="96" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 95;"><span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(processed_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="97" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(processed_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-9" data-nodetype="expression">
 
 </div>
 </div>
 </div>
-<section id="wrong-prediction-new-page" class="level3">
-<h3 class="anchored" data-anchor-id="wrong-prediction-new-page">Wrong prediction (new page)</h3>
+</section>
+<section id="liste-des-mauvaises-predictions" class="level2">
+<h2 class="anchored" data-anchor-id="liste-des-mauvaises-predictions">Liste des mauvaises predictions</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="102" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>WrongPredictions <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="103" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 102;"><span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>WrongPredictions <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-10" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="data-stuffs" class="level2">
-<h2 class="anchored" data-anchor-id="data-stuffs">Data stuffs</h2>
+<!-- Data stuffs -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="108" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> db<span class="op">.</span><span class="fu">query</span>(</span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`</span></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="vs">SELECT text_description, type_, nature, surface, event, code</span></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="vs">FROM liasses</span></span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="109" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 108;"><span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> db<span class="op">.</span><span class="fu">query</span>(</span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="vs">SELECT text_description, type_, nature, surface, event, code</span></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="vs">FROM liasses</span></span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-11" data-nodetype="declaration">
 
@@ -333,15 +326,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="117" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>transformedData <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
-<span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
-<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
-<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>      acc[key] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>    acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
-<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
-<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> {})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="118" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 117;"><span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a>transformedData <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
+<span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
+<span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a>      acc[key] <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-123"><a href="#cb12-123" aria-hidden="true" tabindex="-1"></a>    acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
+<span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
+<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> {})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -349,9 +342,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="129" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 128;"><span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> DuckDBClient<span class="op">.</span><span class="fu">of</span>({</span>
-<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>  <span class="dt">liasses</span><span class="op">:</span> <span class="cf">await</span> csvfile<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="130" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 129;"><span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> DuckDBClient<span class="op">.</span><span class="fu">of</span>({</span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>  <span class="dt">liasses</span><span class="op">:</span> <span class="cf">await</span> csvfile<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -359,14 +352,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="135" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 134;"><span id="cb14-135"><a href="#cb14-135" aria-hidden="true" tabindex="-1"></a>processed_response <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(response<span class="op">.</span><span class="at">IC</span>)<span class="op">.</span><span class="fu">map</span>((key) <span class="kw">=&gt;</span> ({</span>
-<span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IC</span><span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key] <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-16</span> <span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key]<span class="op">,</span></span>
-<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Probability</span><span class="op">:</span> response<span class="op">.</span><span class="at">Probability</span>[key]<span class="op">,</span></span>
-<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Prediction</span><span class="op">:</span> response<span class="op">.</span><span class="at">Prediction</span>[key]<span class="op">,</span></span>
-<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Code</span><span class="op">:</span> response<span class="op">.</span><span class="at">Code</span>[key]<span class="op">,</span></span>
-<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Result</span><span class="op">:</span> response<span class="op">.</span><span class="at">Result</span>[key]<span class="op">,</span></span>
-<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Lib</span><span class="op">:</span> response<span class="op">.</span><span class="at">Lib</span>[key]</span>
-<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="136" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 135;"><span id="cb14-136"><a href="#cb14-136" aria-hidden="true" tabindex="-1"></a>processed_response <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(response<span class="op">.</span><span class="at">IC</span>)<span class="op">.</span><span class="fu">map</span>((key) <span class="kw">=&gt;</span> ({</span>
+<span id="cb14-137"><a href="#cb14-137" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IC</span><span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key] <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-16</span> <span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key]<span class="op">,</span></span>
+<span id="cb14-138"><a href="#cb14-138" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Probability</span><span class="op">:</span> response<span class="op">.</span><span class="at">Probability</span>[key]<span class="op">,</span></span>
+<span id="cb14-139"><a href="#cb14-139" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Prediction</span><span class="op">:</span> response<span class="op">.</span><span class="at">Prediction</span>[key]<span class="op">,</span></span>
+<span id="cb14-140"><a href="#cb14-140" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Code</span><span class="op">:</span> response<span class="op">.</span><span class="at">Code</span>[key]<span class="op">,</span></span>
+<span id="cb14-141"><a href="#cb14-141" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Result</span><span class="op">:</span> response<span class="op">.</span><span class="at">Result</span>[key]<span class="op">,</span></span>
+<span id="cb14-142"><a href="#cb14-142" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Lib</span><span class="op">:</span> response<span class="op">.</span><span class="at">Lib</span>[key]</span>
+<span id="cb14-143"><a href="#cb14-143" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="declaration">
 
@@ -374,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="146" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 145;"><span id="cb15-146"><a href="#cb15-146" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="147" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 146;"><span id="cb15-147"><a href="#cb15-147" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="declaration">
 
@@ -382,60 +375,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="150" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 149;"><span id="cb16-150"><a href="#cb16-150" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> Seuil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="151" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 150;"><span id="cb16-151"><a href="#cb16-151" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> Seuil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-</section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<!-- Functions -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="156" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 155;"><span id="cb17-156"><a href="#cb17-156" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data) {</span>
-<span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://codification-ape.lab.sspcloud.fr/evaluation"</span><span class="op">;</span></span>
-<span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create the request body</span></span>
-<span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> request_body <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
-<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
-<span id="cb17-162"><a href="#cb17-162" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
-<span id="cb17-163"><a href="#cb17-163" aria-hidden="true" tabindex="-1"></a>        acc[key] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb17-164"><a href="#cb17-164" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb17-165"><a href="#cb17-165" aria-hidden="true" tabindex="-1"></a>      acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
-<span id="cb17-166"><a href="#cb17-166" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-167"><a href="#cb17-167" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> acc<span class="op">;</span></span>
-<span id="cb17-168"><a href="#cb17-168" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> {})<span class="op">;</span></span>
-<span id="cb17-169"><a href="#cb17-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-170"><a href="#cb17-170" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url<span class="op">,</span> {</span>
-<span id="cb17-171"><a href="#cb17-171" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
-<span id="cb17-172"><a href="#cb17-172" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> {</span>
-<span id="cb17-173"><a href="#cb17-173" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span><span class="op">,</span></span>
-<span id="cb17-174"><a href="#cb17-174" aria-hidden="true" tabindex="-1"></a>      <span class="dt">Authorization</span><span class="op">:</span> <span class="vs">`Basic </span><span class="sc">${</span><span class="fu">btoa</span>(<span class="vs">`</span><span class="sc">${</span>username<span class="sc">}</span><span class="vs">:</span><span class="sc">${</span>password<span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb17-175"><a href="#cb17-175" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb17-176"><a href="#cb17-176" aria-hidden="true" tabindex="-1"></a>    <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(request_body)</span>
-<span id="cb17-177"><a href="#cb17-177" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb17-178"><a href="#cb17-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-179"><a href="#cb17-179" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">ok</span>) {</span>
-<span id="cb17-180"><a href="#cb17-180" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb17-181"><a href="#cb17-181" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (response<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">400</span>) {</span>
-<span id="cb17-182"><a href="#cb17-182" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>((<span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>())<span class="op">.</span><span class="at">detail</span>)<span class="op">;</span></span>
-<span id="cb17-183"><a href="#cb17-183" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb17-184"><a href="#cb17-184" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Error occurred while querying the API."</span>)<span class="op">;</span></span>
-<span id="cb17-185"><a href="#cb17-185" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">;</span></span>
-<span id="cb17-186"><a href="#cb17-186" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb17-187"><a href="#cb17-187" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="157" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 156;"><span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data) {</span>
+<span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://codification-ape.lab.sspcloud.fr/evaluation"</span><span class="op">;</span></span>
+<span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create the request body</span></span>
+<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> request_body <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
+<span id="cb17-162"><a href="#cb17-162" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
+<span id="cb17-163"><a href="#cb17-163" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
+<span id="cb17-164"><a href="#cb17-164" aria-hidden="true" tabindex="-1"></a>        acc[key] <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb17-165"><a href="#cb17-165" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb17-166"><a href="#cb17-166" aria-hidden="true" tabindex="-1"></a>      acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
+<span id="cb17-167"><a href="#cb17-167" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-168"><a href="#cb17-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> acc<span class="op">;</span></span>
+<span id="cb17-169"><a href="#cb17-169" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> {})<span class="op">;</span></span>
+<span id="cb17-170"><a href="#cb17-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-171"><a href="#cb17-171" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url<span class="op">,</span> {</span>
+<span id="cb17-172"><a href="#cb17-172" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
+<span id="cb17-173"><a href="#cb17-173" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> {</span>
+<span id="cb17-174"><a href="#cb17-174" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span><span class="op">,</span></span>
+<span id="cb17-175"><a href="#cb17-175" aria-hidden="true" tabindex="-1"></a>      <span class="dt">Authorization</span><span class="op">:</span> <span class="vs">`Basic </span><span class="sc">${</span><span class="fu">btoa</span>(<span class="vs">`</span><span class="sc">${</span>username<span class="sc">}</span><span class="vs">:</span><span class="sc">${</span>password<span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb17-176"><a href="#cb17-176" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb17-177"><a href="#cb17-177" aria-hidden="true" tabindex="-1"></a>    <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(request_body)</span>
+<span id="cb17-178"><a href="#cb17-178" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb17-179"><a href="#cb17-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-180"><a href="#cb17-180" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb17-181"><a href="#cb17-181" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb17-182"><a href="#cb17-182" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (response<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">400</span>) {</span>
+<span id="cb17-183"><a href="#cb17-183" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>((<span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>())<span class="op">.</span><span class="at">detail</span>)<span class="op">;</span></span>
+<span id="cb17-184"><a href="#cb17-184" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb17-185"><a href="#cb17-185" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Error occurred while querying the API."</span>)<span class="op">;</span></span>
+<span id="cb17-186"><a href="#cb17-186" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">;</span></span>
+<span id="cb17-187"><a href="#cb17-187" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-188"><a href="#cb17-188" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-17" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-</section>
-<section id="imports" class="level2">
-<h2 class="anchored" data-anchor-id="imports">Imports</h2>
+<!-- Imports -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="193" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 192;"><span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { secret } <span class="im">from</span> <span class="st">"@tmcw/secret"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="194" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 193;"><span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> { secret } <span class="im">from</span> <span class="st">"@tmcw/secret"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-18" data-nodetype="declaration">
 
@@ -443,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="197" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 196;"><span id="cb19-197"><a href="#cb19-197" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="198" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 197;"><span id="cb19-198"><a href="#cb19-198" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-19" data-nodetype="declaration">
 
