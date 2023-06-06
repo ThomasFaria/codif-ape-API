@@ -1,8 +1,8 @@
 ---
-title: "codif-ape-API"
+title: "Evaluation d'un modèle"
 ---
 
-## Quarto
+## Connexion à l'API et ajout des données
 
 ```{ojs}
 viewof username = secret("apiKey", {
@@ -20,7 +20,6 @@ viewof password = secret("apiKey", {
 })
 ```
 
-
 ```{ojs}
 viewof csvfile = Inputs.file({
   label: md`__Observations to evaluate__ 📁 ([Example here](https://raw.githubusercontent.com/ThomasFaria/codif-ape-API/main/website/exemples/exemple.csv))`,
@@ -28,6 +27,8 @@ viewof csvfile = Inputs.file({
   required: true
 })
 ```
+
+## Distribution des indices de confiances
 
 ```{ojs}
 grid = await html`<div style="
@@ -97,13 +98,13 @@ Accuracy = Math.round(d3.mean(subset.map((d) => d.IC)) * 10000) / 100
 Inputs.table(processed_response)
 ```
 
-### Wrong prediction (new page)
+## Liste des mauvaises predictions
 
 ```{ojs}
 WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))
 ```
 
-## Data stuffs
+<!-- Data stuffs -->
 
 ```{ojs}
 data = db.query(
@@ -151,7 +152,7 @@ response = queryBatchApi(username, password, data)
 subset = processed_response.filter((d) => d.IC > Seuil)
 ```
 
-## Functions
+<!-- Functions -->
 
 ```{ojs}
 async function queryBatchApi(username, password, data) {
@@ -188,7 +189,7 @@ async function queryBatchApi(username, password, data) {
 }
 ```
 
-## Imports
+<!-- Imports -->
 
 ```{ojs}
 import { secret } from "@tmcw/secret"

@@ -38,8 +38,6 @@ website:
     left:
       - text: "Overview"
         href: website/index.qmd
-      - text: "Methodology"
-        href: website/methodology.qmd
 
 
   # sidebar:
