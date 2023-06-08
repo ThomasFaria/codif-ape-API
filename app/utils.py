@@ -45,10 +45,6 @@ def get_model(model_name: str, model_version: str) -> object:
 def get_current_username(
     credentials: Annotated[HTTPBasicCredentials, Depends(security)]
 ):
-    print(credentials.username)
-    print(credentials.password)
-    print(os.getenv("API_USERNAME"))
-    print(os.getenv("API_PASSWORD"))
 
     if not (credentials.username == os.getenv("API_USERNAME")) or not (
         credentials.password == os.getenv("API_PASSWORD")
