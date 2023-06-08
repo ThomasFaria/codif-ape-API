@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: codification-ape-model-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: codification-ape-model-deployment
@@ -45,3 +45,5 @@ spec:
             limits:
               memory: "2Gi"
               cpu: "1000m"
+          workers: 10
+          workerTimeout: 600
