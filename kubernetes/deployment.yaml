@@ -38,9 +38,9 @@ spec:
               value: https://projet-ape-57262.user.lab.sspcloud.fr
             # env var for setting models uri which will be deployed
             - name: MLFLOW_MODEL_NAME
-              value: FastText-APE
+              value: test
             - name: MLFLOW_MODEL_VERSION
-              value: Staging
+              value: "6"
           resources:
             limits:
               memory: "2Gi"
