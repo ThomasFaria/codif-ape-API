@@ -38,7 +38,8 @@ website:
     left:
       - text: "Overview"
         href: website/index.qmd
-
+      - text: "LMNP"
+        href: website/lmnp.qmd
 
   # sidebar:
   #   - id: ppi
@@ -53,6 +54,7 @@ website:
 
 format:
   html:
+    keep-ipynb: true
     theme:
       light: [cosmo, style/styles.scss]
     reference-location: margin

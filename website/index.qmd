@@ -37,15 +37,15 @@ grid = await html`<div style="
               border: none ;
               display: grid;
               width: ${screen.width};
-              grid-template-areas: 
+              grid-template-areas:
                 'a b c'
                 'd d d'
                 ;
               grid-gap: 10px;
             ">
               <div name="a" style="grid-area: a; position: relative;">${viewof quantile}</div>
-              <div name="b" style="grid-area: b; position: relative;">Accuracy: ${Accuracy}</div>
-              <div name="c" style="grid-area: c; position: relative;">Seuil: ${Seuil}</div>
+              <div name="b" style="grid-area: b; position: relative;"><div class="textstyled">Accuracy: ${Accuracy}</div></div>
+              <div name="c" style="grid-area: c; position: relative;"><div class="textstyled">Seuil: ${Seuil}</div></div>
               <div name="d" style="grid-area: d; position: relative;">${distrib}</div>
             </div>`
 ```
@@ -197,4 +197,49 @@ import { secret } from "@tmcw/secret"
 
 ```{ojs}
 import {slider} from "@jashkenas/inputs"
+```
+
+```{ojs}
+Plot = require("https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js")
+```
+
+```{ojs}
+html`<style>
+  @import
+  url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.title {
+  font-family: Roboto;
+  font-weight:bold;
+  font-size:30px;
+  color:white;
+  border-radius: 20px;
+  background: #1D3867;
+  width: 200px;
+  height: 45px;
+  margin: auto;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  text-align: center;
+  }
+
+.textstyled {
+  left: 0px;
+  font-family: Roboto;
+  font-weight:bold;
+  font-size:15px;
+  color:white;
+  border-radius: 15px;
+  background: #1D3867;
+  height: 15px;
+  margin: auto;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 25px;
+}
+</style>`
+
 ```

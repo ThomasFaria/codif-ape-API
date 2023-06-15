@@ -1,0 +1,83 @@
+---
+title: "LMNP"
+---
+
+## LMNP
+
+```{python}
+import requests
+import pandas as pd
+import numpy as np
+from urllib.parse import urlencode
+import os
+```
+
+
+
+```{python}
+
+def query_batch_api(username: str, password: str, data: pd.DataFrame, nb_echos_max:int = 5, prob_min: float = 0.01):
+    base_url = "https://codification-ape.lab.sspcloud.fr/predict-batch"
+    params = {
+        "nb_echos_max": nb_echos_max,
+        "prob_min": prob_min
+    }
+    url = f"{base_url}?{urlencode(params)}"
+
+    # Create the request body as a dictionary from the DataFrame
+    request_body = data.to_dict(orient="list")
+
+    response = requests.post(url, json=request_body, auth=(username, password))
+
+    if response.status_code == 200:
+        return response.json()
+    elif response.status_code == 400:
+        print(response.json()["detail"])
+    else:
+        print("Error occurred while querying the API.")
+        return None
+```
+
+```{python}
+libs = list(np.repeat(["LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LMNP"], 11, axis=0))
+types = ["", "L", "E", "X", "S", "I", "C", "R", "G", "D", "Y"] * 3
+natures = ["", "", "", "", "", "", "", "", "", "", ""] * 3
+surfaces =["", "", "", "", "", "", "", "", "", "", ""] * 3
+event = ["", "", "", "", "", "", "", "", "", "", ""] * 3
+```
+
+```{python}
+data = {
+    "text_description": libs,
+    "type_": types,
+    "nature": natures,
+    "surface": surfaces,
+    "event": event
+}
+df = pd.DataFrame(data)
+```
+
+```{python}
+username = "codification-ape" #os.getenv("API_USERNAME")
+password = "codification-sirene4" #os.getenv("API_PASSWORD")
+result = query_batch_api(username, password, df)
+
+```
+
+
+```{python}
+w=pd.DataFrame({
+    "Prédiction" : [result[i]["1"]["code"] for i in range(len(result))],
+    "Score" : [result[i]["IC"]  for i in range(len(result))],
+    "Libellé" : [result[i]["1"]["libelle"]  for i in range(len(result))]})
+```
+
+```{python}
+df['True'] = df['type_'].apply(lambda x: "5520Z" if x in ['C', 'R', 'G', 'D', 'Y'] else "6820A")
+```
+
+```{python}
+df = df.merge(w, left_index=True, right_index=True)
+df["Error"] = df["True"] == df["Prédiction"]
+df
+```
