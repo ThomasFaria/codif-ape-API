@@ -30,7 +30,7 @@ jobs:
 
       - name: Install python Dependencies
         run: |
-          pip install pybind11 nbclient nbformat pandas numpy urllib
+          pip install pybind11 nbclient nbformat pandas numpy
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
