@@ -36,8 +36,10 @@ website:
         aria-label: GitHub
 
     left:
-      - text: "Overview"
+      - text: "Accueil"
         href: website/index.qmd
+      - text: "Évaluation de liasses"
+        href: website/eval-liasses.qmd
       - text: "LMNP"
         href: website/lmnp.qmd
 
