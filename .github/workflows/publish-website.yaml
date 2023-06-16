@@ -4,8 +4,7 @@ name: Publish Website
 on:
   push:
     paths:
-      - 'website/**'
-  # Allows you to run this workflow manually from the Actions tab
+      - website/**
   workflow_dispatch:
 
 jobs:
