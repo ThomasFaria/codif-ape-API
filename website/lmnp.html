@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Evaluation of the model - Methodology</title>
+<title>Evaluation of the model - LMNP</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,10 +61,12 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="https://kit.fontawesome.com/78ddb093ea.js" crossorigin="anonymous"></script>
 <script src="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<meta property="og:title" content="Evaluation of the model - Methodology">
-<meta property="og:description" content="">
+<meta property="og:title" content="Evaluation of the model - LMNP">
 <meta property="og:site-name" content="Evaluation of the model">
 </head>
 
@@ -83,6 +85,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="../website/index.html" rel="" target="">
  <span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../website/lmnp.html" rel="" target="" aria-current="page">
+ <span class="menu-text">LMNP</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -107,16 +113,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#lmnp" id="toc-lmnp" class="nav-link active" data-scroll-target="#lmnp">LMNP</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ThomasFaria/codif-ape-API/edit/main/website/methodology.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ThomasFaria/codif-ape-API/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ThomasFaria/codif-ape-API/edit/main/website/lmnp.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ThomasFaria/codif-ape-API/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Methodology</h1>
+<h1 class="title">LMNP</h1>
 </div>
 
 
@@ -131,9 +137,465 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="lmnp" class="level2">
+<h2 class="anchored" data-anchor-id="lmnp">LMNP</h2>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">text_description</th>
+<th data-quarto-table-cell-role="th">type_</th>
+<th data-quarto-table-cell-role="th">nature</th>
+<th data-quarto-table-cell-role="th">surface</th>
+<th data-quarto-table-cell-role="th">event</th>
+<th data-quarto-table-cell-role="th">True</th>
+<th data-quarto-table-cell-role="th">Prédiction</th>
+<th data-quarto-table-cell-role="th">Score</th>
+<th data-quarto-table-cell-role="th">Libellé</th>
+<th data-quarto-table-cell-role="th">Error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.999556</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>L</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.995280</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>E</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.967061</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.992815</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>S</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.847198</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>1.000000</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.830647</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.558918</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.418262</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>D</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.936932</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.416244</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.999556</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>L</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.995280</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>E</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.967061</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.992815</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>S</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.847198</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>1.000000</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.830647</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.558918</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.418262</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>D</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.936932</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.416244</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>LMNP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>1.000000</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>LMNP</td>
+<td>L</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.993710</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>LMNP</td>
+<td>E</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.998824</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>LMNP</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.986774</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>LMNP</td>
+<td>S</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>0.955319</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>LMNP</td>
+<td>I</td>
+<td></td>
+<td></td>
+<td></td>
+<td>6820A</td>
+<td>6820A</td>
+<td>1.000000</td>
+<td>Location de logements</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>LMNP</td>
+<td>C</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>5520Z</td>
+<td>0.999290</td>
+<td>Hébergement touristique et autre hébergement d...</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>LMNP</td>
+<td>R</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.939913</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>LMNP</td>
+<td>G</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.829982</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>LMNP</td>
+<td>D</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.960361</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>LMNP</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>5520Z</td>
+<td>6820A</td>
+<td>0.791605</td>
+<td>Location de logements</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
 
 
 </section>
