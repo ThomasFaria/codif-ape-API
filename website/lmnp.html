@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Evaluation of the model - LMNP</title>
+<title>Evaluation of the model - Analyse des loueurs meublés non professionnel</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -61,12 +95,14 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script src="https://kit.fontawesome.com/78ddb093ea.js" crossorigin="anonymous"></script>
 <script src="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap" crossorigin="anonymous"></script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<meta property="og:title" content="Evaluation of the model - LMNP">
+<meta property="og:title" content="Evaluation of the model - Analyse des loueurs meublés non professionnel">
 <meta property="og:site-name" content="Evaluation of the model">
 </head>
 
@@ -84,7 +120,11 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../website/index.html" rel="" target="">
- <span class="menu-text">Overview</span></a>
+ <span class="menu-text">Accueil</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../website/eval-liasses.html" rel="" target="">
+ <span class="menu-text">Évaluation de liasses</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../website/lmnp.html" rel="" target="" aria-current="page">
@@ -109,20 +149,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#lmnp" id="toc-lmnp" class="nav-link active" data-scroll-target="#lmnp">LMNP</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ThomasFaria/codif-ape-API/edit/main/website/lmnp.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ThomasFaria/codif-ape-API/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LMNP</h1>
+<h1 class="title">Analyse des loueurs meublés non professionnel</h1>
 </div>
 
 
@@ -137,470 +171,158 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="lmnp" class="level2">
-<h2 class="anchored" data-anchor-id="lmnp">LMNP</h2>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="6" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 5;"><span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> <span class="cf">await</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="vs">              background: #fff;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="vs">              margin: 10;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a b'</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="vs">                'c c'</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="vs">                'd d'</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>viewof Seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;</span><span class="sc">${</span>viewof selection<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;</span><span class="sc">${</span>viewof var_annexes<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="d" style="grid-area: d; position: relative;"&gt;</span><span class="sc">${</span>viewof table_data<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="28" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 27;"><span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>viewof Seuil <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Seuil choisi"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.01</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.8</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="32" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 31;"><span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>viewof selection <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="st">"Tous"</span><span class="op">,</span> <span class="st">"Bonnes prédictions"</span><span class="op">,</span> <span class="st">"Erreurs reprises"</span><span class="op">,</span> <span class="st">"Erreurs problématiques"</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Résultats des LMNP"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="36" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 35;"><span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>viewof var_annexes <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">toggle</span>({<span class="dt">label</span><span class="op">:</span> <span class="st">"Variables annexes"</span><span class="op">,</span> <span class="dt">values</span><span class="op">:</span> [<span class="kw">true</span><span class="op">,</span> <span class="kw">false</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="40" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>viewof table_data <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(<span class="fu">selector</span>(<span class="fu">transpose</span>(data_lmnp)<span class="op">,</span> selection)<span class="op">,</span> {</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="dt">rows</span><span class="op">:</span> <span class="dv">17</span><span class="op">,</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="dt">columns</span><span class="op">:</span> var_annexes</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> [<span class="st">"text_description"</span><span class="op">,</span> <span class="st">"type_"</span><span class="op">,</span> <span class="st">"Prédiction"</span><span class="op">,</span> <span class="st">"Score"</span><span class="op">,</span> <span class="st">"nature"</span><span class="op">,</span> <span class="st">"surface"</span><span class="op">,</span> <span class="st">"event"</span>]</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> [<span class="st">"text_description"</span><span class="op">,</span> <span class="st">"type_"</span><span class="op">,</span> <span class="st">"Prédiction"</span><span class="op">,</span> <span class="st">"Score"</span>]<span class="op">,</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    <span class="dt">text_description</span><span class="op">:</span> <span class="st">"Libellé"</span><span class="op">,</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type_</span><span class="op">:</span> <span class="st">"Type"</span><span class="op">,</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="dt">nature</span><span class="op">:</span> <span class="st">"Nature"</span><span class="op">,</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="dt">surface</span><span class="op">:</span> <span class="st">"Surface"</span><span class="op">,</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    <span class="dt">event</span> <span class="op">:</span> <span class="st">"Évènement"</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> </span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">format</span><span class="op">:</span> {</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Score"</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">get_background</span>(d)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="60" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">get_background</span>(d) {</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> color <span class="op">=</span> d <span class="op">&gt;</span> Seuil <span class="op">?</span> <span class="st">"#19975d"</span> <span class="op">:</span> <span class="st">"#f15060"</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="vs">    background: </span><span class="sc">${</span>color<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">"en"</span>)<span class="sc">}</span><span class="vs">;</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="vs">    width: 95%;</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="vs">    float: center;</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="vs">    border-radius:15px;</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="vs">    padding-left: 10px;</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="vs">    padding-right: 10px;</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a><span class="vs">    margin: 0 auto; /* Center the div horizontally */</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="vs">    text-align: center; /* Center the text within the div */</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="vs">    "&gt;</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(d <span class="op">*</span> <span class="dv">10000</span>) <span class="op">/</span> <span class="dv">10000</span><span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<!-- https://observablehq.com/@romellogoodman/riso-colors -->
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="82" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 81;"><span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">selector</span>(data<span class="op">,</span> selector) {</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> b<span class="op">;</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">switch</span> (selector) {</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">"Tous"</span><span class="op">:</span></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> data<span class="op">;</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">"Bonnes prédictions"</span><span class="op">:</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Error</span> <span class="op">===</span> <span class="kw">false</span>)<span class="op">;</span></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">"Erreurs reprises"</span><span class="op">:</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Error</span> <span class="op">===</span> <span class="kw">true</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Score</span> <span class="op">&lt;=</span> Seuil)<span class="op">;</span></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>        <span class="cf">case</span> <span class="st">"Erreurs problématiques"</span><span class="op">:</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> data<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Error</span> <span class="op">===</span> <span class="kw">true</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">Score</span> <span class="op">&gt;</span> Seuil)<span class="op">;</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>        <span class="cf">default</span><span class="op">:</span></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> b<span class="op">;</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="108" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> {slider} <span class="im">from</span> <span class="st">"@jashkenas/inputs"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<!-- Annexes  -->
 <div class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">text_description</th>
-<th data-quarto-table-cell-role="th">type_</th>
-<th data-quarto-table-cell-role="th">nature</th>
-<th data-quarto-table-cell-role="th">surface</th>
-<th data-quarto-table-cell-role="th">event</th>
-<th data-quarto-table-cell-role="th">True</th>
-<th data-quarto-table-cell-role="th">Prédiction</th>
-<th data-quarto-table-cell-role="th">Score</th>
-<th data-quarto-table-cell-role="th">Libellé</th>
-<th data-quarto-table-cell-role="th">Error</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.999556</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>L</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.995280</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.967061</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.992815</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>S</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.847198</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>I</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>1.000000</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>C</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.830647</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>R</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.558918</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>G</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.418262</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>D</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.936932</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>LOUEUR EN MEUBLE NON PROFESSIONNEL</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.416244</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.999556</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>L</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.995280</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.967061</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.992815</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>S</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.847198</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>I</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>1.000000</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>C</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.830647</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>R</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.558918</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>G</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.418262</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>D</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.936932</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>LOUEUR MEUBLE NON PROFESSIONNEL</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.416244</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>LMNP</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>1.000000</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>LMNP</td>
-<td>L</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.993710</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>LMNP</td>
-<td>E</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.998824</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>LMNP</td>
-<td>X</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.986774</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>LMNP</td>
-<td>S</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>0.955319</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>LMNP</td>
-<td>I</td>
-<td></td>
-<td></td>
-<td></td>
-<td>6820A</td>
-<td>6820A</td>
-<td>1.000000</td>
-<td>Location de logements</td>
-<td>True</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>LMNP</td>
-<td>C</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>5520Z</td>
-<td>0.999290</td>
-<td>Hébergement touristique et autre hébergement d...</td>
-<td>True</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>LMNP</td>
-<td>R</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.939913</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
-<td>LMNP</td>
-<td>G</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.829982</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>LMNP</td>
-<td>D</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.960361</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>LMNP</td>
-<td>Y</td>
-<td></td>
-<td></td>
-<td></td>
-<td>5520Z</td>
-<td>6820A</td>
-<td>0.791605</td>
-<td>Location de logements</td>
-<td>False</td>
-</tr>
-</tbody>
-</table>
-
-</div>
+<div class="cell-output cell-output-display">
+<script type="ojs-define">{"contents": [{"name": "data_lmnp", "value": {"text_description": ["LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR EN MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LOUEUR MEUBLE NON PROFESSIONNEL", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP", "LMNP"], "type_": ["", "L", "E", "X", "S", "I", "C", "R", "G", "D", "Y", "", "L", "E", "X", "S", "I", "C", "R", "G", "D", "Y", "", "L", "E", "X", "S", "I", "C", "R", "G", "D", "Y"], "nature": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "surface": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "event": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""], "True": ["6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "5520Z", "5520Z", "5520Z", "5520Z", "6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "5520Z", "5520Z", "5520Z", "5520Z", "6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "5520Z", "5520Z", "5520Z", "5520Z"], "Pr\u00e9diction": ["6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "6820A", "5520Z", "6820A", "5520Z", "6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "6820A", "5520Z", "6820A", "5520Z", "6820A", "6820A", "6820A", "6820A", "6820A", "6820A", "5520Z", "6820A", "6820A", "6820A", "6820A"], "Score": [0.9995557951, 0.9952801485, 0.9670613464, 0.9928146792, 0.8471976058, 1.0000000136, 0.8306465149, 0.5589182079, 0.4182616174, 0.9369323135, 0.4162441939, 0.9995557951, 0.9952801485, 0.9670613464, 0.9928146792, 0.8471976058, 1.0000000136, 0.8306465149, 0.5589182079, 0.4182616174, 0.9369323135, 0.4162441939, 1.0000000136, 0.9937101142, 0.9988243189, 0.9867743346, 0.9553191202, 1.0000000136, 0.9992903432, 0.939913346, 0.8299815431, 0.9603611963, 0.7916047913], "Libell\u00e9": ["Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "Location de logements", "H\u00e9bergement touristique et autre h\u00e9bergement de courte dur\u00e9e", "Location de logements", "Location de logements", "Location de logements", "Location de logements"], "Error": [false, false, false, false, false, false, false, true, false, true, false, false, false, false, false, false, false, false, true, false, true, false, false, false, false, false, false, false, false, true, true, true, true]}}]}</script>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
+
+<script type="ojs-module-contents">
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"grid = await html`<div style=\"\n              background: #fff;\n              margin: 10;\n              border: none ;\n              display: grid;\n              width: ${screen.width};\n              grid-template-areas:\n                'a b'\n                'c c'\n                'd d'\n                ;\n              grid-gap: 10px;\n            \">\n              <div name=\"a\" style=\"grid-area: a; position: relative;\">${viewof Seuil}</div>\n              <div name=\"b\" style=\"grid-area: b; position: relative;\">${viewof selection}</div>\n              <div name=\"c\" style=\"grid-area: c; position: relative;\">${viewof var_annexes}</div>\n              <div name=\"d\" style=\"grid-area: d; position: relative;\">${viewof table_data}</div>\n            </div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof Seuil = Inputs.range([0, 1], {label: \"Seuil choisi\", step: 0.01, value: 0.8})\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof selection = Inputs.select([\"Tous\", \"Bonnes prédictions\", \"Erreurs reprises\", \"Erreurs problématiques\"], {label: \"Résultats des LMNP\"}) \n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"viewof var_annexes = Inputs.toggle({label: \"Variables annexes\", values: [true, false]})\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"viewof table_data = Inputs.table(selector(transpose(data_lmnp), selection), {\n    rows: 17,\n    columns: var_annexes\n  ? [\"text_description\", \"type_\", \"Prédiction\", \"Score\", \"nature\", \"surface\", \"event\"]\n  : [\"text_description\", \"type_\", \"Prédiction\", \"Score\"],\n  header: {\n    text_description: \"Libellé\",\n    type_: \"Type\",\n    nature: \"Nature\",\n    surface: \"Surface\",\n    event : \"Évènement\"\n  }, \n  format: {\n    \"Score\": d => get_background(d)\n  }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"function get_background(d) {\n    const color = d > Seuil ? \"#19975d\" : \"#f15060\"\n\n  \n  return html`<div style=\"\n    background: ${color.toLocaleString(\"en\")};\n    width: 95%;\n    float: center;\n    border-radius:15px;\n    padding-left: 10px;\n    padding-right: 10px;\n    margin: 0 auto; /* Center the div horizontally */\n    text-align: center; /* Center the text within the div */\n    \">\n    ${Math.round(d * 10000) / 10000}`;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"function selector(data, selector) {\n    let b;\n    switch (selector) {\n        case \"Tous\":\n            b = data;\n        case \"Bonnes prédictions\":\n            b = data.filter(d => d.Error === false);\n            break;\n        case \"Erreurs reprises\":\n            b = data.filter(d => d.Error === true && d.Score <= Seuil);\n            break;\n        case \"Erreurs problématiques\":\n            b = data.filter(d => d.Error === true && d.Score > Seuil);\n            break;\n        default:\n            break;\n    }\n    return b;\n}\n\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"import {slider} from \"@jashkenas/inputs\"\n"},{"methodName":"interpretQuiet","source":"shinyInput('Seuil')"},{"methodName":"interpretQuiet","source":"shinyInput('selection')"},{"methodName":"interpretQuiet","source":"shinyInput('var_annexes')"},{"methodName":"interpretQuiet","source":"shinyInput('table_data')"}]}
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../website";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -840,7 +562,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ThomasFaria/codif-ape-API/edit/main/website/lmnp.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/ThomasFaria/codif-ape-API/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
