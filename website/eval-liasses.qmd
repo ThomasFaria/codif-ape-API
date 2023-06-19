@@ -84,6 +84,46 @@ Accuracy = Math.round(d3.mean(subset.map((d) => d.IC)) * 10000) / 100
 Inputs.table(processed_response)
 ```
 
+
+## Taux de classification automatique sur IC
+
+
+
+```{ojs}
+Plot.plot({
+  grid: true,
+  y: {
+    label: "↑ Indice de confiance"
+  },
+  x: {
+    label: "→ Taux de classification automatique"
+  },
+  marks: [
+    Plot.line(ic_tx_classif, {
+      x: "quantiles",
+      y: "seuils",
+      stroke: "black",
+      strokeWidth: 2
+    }),
+    Plot.tip(
+      ic_tx_classif,
+      Plot.pointer({
+        x: "quantiles",
+        y: "seuils",
+        title: (d) => `Accuracy : ${get_accuracies_from_threshold(
+          ic_tx_classif,
+          d.seuils
+        )}\nIC : ${
+          Math.round(d.seuils * 100) / 100
+        }\nTaux classification automatique
+${d.quantiles}`
+      })
+    )
+  ],
+  color: { legend: true }
+})
+```
+
 ## Liste des mauvaises predictions
 
 ```{ojs}
@@ -138,6 +178,30 @@ response = queryBatchApi(username, password, data)
 subset = processed_response.filter((d) => d.IC > Seuil)
 ```
 
+```{ojs}
+ic_tx_classif = {
+  const newArray = [];
+  for (let i = 0; i < quantiles.length; i++) {
+    newArray.push({ quantiles: quantiles[i], seuils: seuils[i] });
+  }
+  return newArray;
+}
+```
+
+```{ojs}
+quantiles = Array.from({ length: 101 }, (_, i) => i/100) // Array with quantile values from 0 to 1
+```
+
+```{ojs}
+seuils = quantiles.map((quantile) =>
+  d3.quantile(
+    processed_response.map((d) => d.IC),
+    1 - quantile
+  )
+)
+```
+
+
 <!-- Functions -->
 
 ```{ojs}
@@ -172,6 +236,16 @@ async function queryBatchApi(username, password, data) {
     console.log("Error occurred while querying the API.");
     return response;
   }
+}
+```
+
+```{ojs}
+function get_accuracies_from_threshold(d, threshold) {
+  let acc = d3.mean(
+    processed_response.filter((d) => d.IC > threshold).map((d) => d.IC)
+  );
+  acc = acc === undefined ? 1 : Math.round(acc * 100) / 100;
+  return acc;
 }
 ```
 
