@@ -278,7 +278,7 @@ async def eval_batch(
             ]
             for i in range(len(predictions[0]))
         ],
-        columns=["IC", "Probability", "Prediction"],
+        columns=["Probability", "IC", "Prediction"],
     )
 
     df["Code"] = liasses.code
