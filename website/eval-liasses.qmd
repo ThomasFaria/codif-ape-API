@@ -43,6 +43,27 @@ grid = await html`<div style="
             </div>`
 ```
 
+```{ojs}
+grid2 = await html`<div style="
+              background: #fff;
+              margin: 0;
+              border: none ;
+              display: grid;
+              width: ${screen.width};
+              grid-template-areas: 
+                'a'
+                'b'
+                'c'
+                ;
+              grid-gap: 10px;
+            ">
+              <div name="a" style="grid-area: a; position: relative;">${codif_seuil}</div>
+              <div name="b" style="grid-area: b; position: relative;">${acc_seuil}</div>
+              <div name="c" style="grid-area: c; position: relative;">${acc_codif}</div>
+            </div>`
+```
+
+
 
 ```{ojs}
 viewof quantile = Inputs.range([0, 100], {label: "Taux de classification automatique", step: 1, value: 80})
@@ -67,68 +88,157 @@ distrib = Plot.plot({
 })
 ```
 
+
 ```{ojs}
-Seuil = Math.round(
+Seuil = round(
   d3.quantile(
     processed_response.map((d) => d.IC),
     1 - quantile / 100
-  ) * 100
-) / 100
+  ),
+  2
+)
 ```
 
 ```{ojs}
-Accuracy = Math.round(d3.mean(subset.map((d) => d.IC)) * 10000) / 100
+Accuracy = round(d3.mean(subset.map((d) => d.Result)) * 100, 2)
 ```
-
-```{ojs}
-Inputs.table(processed_response)
-```
-
 
 ## Taux de classification automatique sur IC
 
-
-
 ```{ojs}
-Plot.plot({
+codif_seuil = Plot.plot({
   grid: true,
   y: {
-    label: "↑ Indice de confiance"
+    label: "↑ Taux de classification automatique (%)",
+    percent: true
   },
   x: {
-    label: "→ Taux de classification automatique"
+    label: "→ Seuil choisi"
   },
   marks: [
     Plot.line(ic_tx_classif, {
-      x: "quantiles",
-      y: "seuils",
+      x: "seuils",
+      y: "codif_auto",
       stroke: "black",
       strokeWidth: 2
     }),
     Plot.tip(
       ic_tx_classif,
       Plot.pointer({
-        x: "quantiles",
-        y: "seuils",
-        title: (d) => `Accuracy : ${get_accuracies_from_threshold(
-          ic_tx_classif,
-          d.seuils
-        )}\nIC : ${
-          Math.round(d.seuils * 100) / 100
-        }\nTaux classification automatique
-${d.quantiles}`
+        x: "seuils",
+        y: "codif_auto",
+        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\nSeuil : ${round(
+          d.seuils,
+          2
+        )}\nTaux classification automatique: 
+${round(d.codif_auto * 100, 2)} %`
       })
-    )
+    ),
+    Plot.tip([`Seuil à 0.6`], {
+      x: ic_tx_classif[60].seuils,
+      y: ic_tx_classif[60].codif_auto,
+      anchor: "bottom"
+    })
   ],
   color: { legend: true }
 })
 ```
 
+```{ojs}
+acc_seuil = Plot.plot({
+  grid: true,
+  y: {
+    label: "↑ Accuracy (%)",
+    percent: true
+  },
+  x: {
+    label: "→ Seuil choisi"
+  },
+  marks: [
+    Plot.line(ic_tx_classif, {
+      x: "seuils",
+      y: "accuracies",
+      stroke: "black",
+      strokeWidth: 2
+    }),
+    Plot.tip(
+      ic_tx_classif,
+      Plot.pointer({
+        x: "seuils",
+        y: "accuracies",
+        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\nSeuil : ${round(
+          d.seuils,
+          2
+        )}\nTaux classification automatique: 
+${round(d.codif_auto * 100, 2)} %`
+      })
+    ),
+    Plot.tip([`Seuil à 0.6`], {
+      x: ic_tx_classif[60].seuils,
+      y: ic_tx_classif[60].accuracies,
+      anchor: "bottom"
+    })
+  ],
+  color: { legend: true }
+})
+```
+
+```{ojs}
+acc_codif = Plot.plot({
+  grid: true,
+  y: {
+    label: "↑ Accuracy (%)",
+    percent: true
+  },
+  x: {
+    label: "→ Taux de classification automatique (%)",
+    percent: true
+  },
+  marks: [
+    Plot.line(ic_tx_classif, {
+      x: "codif_auto",
+      y: "accuracies",
+      stroke: "black",
+      strokeWidth: 2
+    }),
+    Plot.tip(
+      ic_tx_classif,
+      Plot.pointer({
+        x: "codif_auto",
+        y: "accuracies",
+        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\nSeuil : ${round(
+          d.seuils,
+          2
+        )}\nTaux classification automatique: 
+${round(d.codif_auto * 100, 2)} %`
+      })
+    ),
+    Plot.tip([`Seuil à 0.6`], {
+      x: ic_tx_classif[60].codif_auto,
+      y: ic_tx_classif[60].accuracies,
+      anchor: "bottom"
+    })
+  ],
+  color: { legend: true }
+})
+```
+
+
 ## Liste des mauvaises predictions
+
+```{ojs}
+Plot.barY(count_errors.slice(0, 15), {
+  x: "value",
+  y: "frequency",
+  sort: { x: "-y" },
+  tip: true
+}).plot()
+```
 
 ```{ojs}
 WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))
 ```
+
 
 <!-- Data stuffs -->
 
@@ -181,8 +291,17 @@ subset = processed_response.filter((d) => d.IC > Seuil)
 ```{ojs}
 ic_tx_classif = {
   const newArray = [];
-  for (let i = 0; i < quantiles.length; i++) {
-    newArray.push({ quantiles: quantiles[i], seuils: seuils[i] });
+  for (let i = 0; i <= 1; i += 0.01) {
+    let seuil = round(i, 2);
+    newArray.push({
+      seuils: seuil,
+      codif_auto:
+        processed_response.filter((d) => d.IC > seuil).length /
+        processed_response.length,
+      accuracies: get_accuracies_from_threshold(processed_response, i, {
+        round_int: 15
+      })
+    });
   }
   return newArray;
 }
@@ -198,6 +317,12 @@ seuils = quantiles.map((quantile) =>
     processed_response.map((d) => d.IC),
     1 - quantile
   )
+)
+```
+
+```{ojs}
+count_errors = valueCounts(
+  subset.filter((d) => 1 - d.Result).map((d) => d.Code)
 )
 ```
 
@@ -240,14 +365,50 @@ async function queryBatchApi(username, password, data) {
 ```
 
 ```{ojs}
-function get_accuracies_from_threshold(d, threshold) {
-  let acc = d3.mean(
-    processed_response.filter((d) => d.IC > threshold).map((d) => d.IC)
-  );
-  acc = acc === undefined ? 1 : Math.round(acc * 100) / 100;
+function get_accuracies_from_threshold(
+  data,
+  threshold,
+  { round_int = 2 } = {}
+) {
+  let acc = d3.mean(data.filter((d) => d.IC > threshold).map((d) => d.Result));
+  acc = acc === undefined ? 1 : round(acc, round_int);
   return acc;
 }
 ```
+
+```{ojs}
+function round(d, int) {
+  return Math.round(d * 10 ** int) / 10 ** int;
+}
+```
+
+```{ojs}
+function valueCounts(array, { freq = false } = {}) {
+  const counts = {};
+
+  for (let i = 0; i < array.length; i++) {
+    const value = array[i];
+
+    if (counts[value]) {
+      counts[value]++;
+    } else {
+      counts[value] = 1;
+    }
+  }
+
+  const result = [];
+
+  const arrayLength = array.length;
+  for (const value in counts) {
+    const frequency = freq ? counts[value] / arrayLength : counts[value];
+    result.push({ value: value, frequency: frequency });
+  }
+  result.sort((a, b) => b.frequency - a.frequency); // Sort by frequency in descending order
+
+  return result;
+}
+```
+
 
 <!-- Imports -->
 
