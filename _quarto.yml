@@ -6,8 +6,8 @@ project:
 
 website:
   page-navigation: true
-  title: "Evaluation of the model"
-  description: "Website for model evaluation"
+  title: "Évaluation classification APE"
+  description: "Site pour faciliter l'évalutation d'un modèle"
   site-url: "https://ThomasFaria.github.io/codif-ape-API/"
 
   repo-url: "https://github.com/ThomasFaria/codif-ape-API"

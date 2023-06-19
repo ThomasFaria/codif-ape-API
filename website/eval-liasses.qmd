@@ -5,19 +5,12 @@ title: "Evaluation d'un modèle"
 ## Connexion à l'API et ajout des données
 
 ```{ojs}
-viewof username = secret("apiKey", {
-  description:
-    "This is your username for the API, it is only available to you!",
-  submit: "Set username"
-})
+viewof username = Inputs.password({label: html`<b>Set username</b>`, value: ""})
 ```
 
 ```{ojs}
-viewof password = secret("apiKey", {
-  description:
-    "This is your password for the API, it is only available to you!",
-  submit: "Set password"
-})
+viewof password = Inputs.password({label: html`<b>Set password</b>`, value: ""})
+
 ```
 
 ```{ojs}
@@ -52,14 +45,7 @@ grid = await html`<div style="
 
 
 ```{ojs}
-viewof quantile = slider({
-  min: 0,
-  max: 100,
-  step: 1,
-  value: 80,
-  format: (v) => `${v}%`,
-  description: "Taux de classification automatique"
-})
+viewof quantile = Inputs.range([0, 100], {label: "Taux de classification automatique", step: 1, value: 80})
 ```
 
 ```{ojs}
@@ -190,14 +176,6 @@ async function queryBatchApi(username, password, data) {
 ```
 
 <!-- Imports -->
-
-```{ojs}
-import { secret } from "@tmcw/secret"
-```
-
-```{ojs}
-import {slider} from "@jashkenas/inputs"
-```
 
 ```{ojs}
 Plot = require("https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js")
