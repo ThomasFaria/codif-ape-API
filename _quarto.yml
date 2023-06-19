@@ -56,7 +56,7 @@ website:
 
 format:
   html:
-    keep-ipynb: true
+    # keep-ipynb: true
     theme:
       light: [cosmo, style/styles.scss]
     reference-location: margin
