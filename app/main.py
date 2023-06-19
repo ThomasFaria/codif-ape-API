@@ -281,6 +281,8 @@ async def eval_batch(
         columns=["Probability", "IC", "Prediction"],
     )
 
+    df[["Probability", "IC"]] = df[["Probability", "IC"]].applymap(lambda x: 1 if x > 1 else x)
+    
     df["Code"] = liasses.code
     df["Result"] = df["Code"] == df["Prediction"]
     df["Lib"] = liasses.text_description
