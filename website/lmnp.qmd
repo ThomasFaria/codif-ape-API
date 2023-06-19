@@ -164,8 +164,8 @@ df = pd.DataFrame(data)
 ```
 
 ```{python}
-username = "codification-ape" #os.getenv("API_USERNAME")
-password = "codification-sirene4" #os.getenv("API_PASSWORD")
+username = os.getenv("API_USERNAME")
+password = os.getenv("API_PASSWORD")
 result = query_batch_api(username, password, df)
 
 ```
