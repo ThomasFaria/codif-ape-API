@@ -103,7 +103,23 @@ Seuil = round(
 Accuracy = round(d3.mean(subset.map((d) => d.Result)) * 100, 2)
 ```
 
-## Taux de classification automatique sur IC
+## Analyse des erreurs
+
+```{ojs}
+Plot.barY(count_errors.slice(0, 15), {
+  x: "value",
+  y: "frequency",
+  sort: { x: "-y" },
+  tip: true
+}).plot()
+```
+
+```{ojs}
+WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))
+```
+
+
+## Impact du seuil de reprise sur la performance et le taux 
 
 ```{ojs}
 codif_seuil = Plot.plot({
@@ -224,19 +240,23 @@ ${round(d.codif_auto * 100, 2)} %`
 ```
 
 
-## Liste des mauvaises predictions
-
 ```{ojs}
-Plot.barY(count_errors.slice(0, 15), {
-  x: "value",
-  y: "frequency",
-  sort: { x: "-y" },
-  tip: true
-}).plot()
-```
-
-```{ojs}
-WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))
+ic_tx_classif = {
+  const newArray = [];
+  for (let i = 0; i <= 1; i += 0.01) {
+    let seuil = round(i, 2);
+    newArray.push({
+      seuils: seuil,
+      codif_auto:
+        processed_response.filter((d) => d.IC > seuil).length /
+        processed_response.length,
+      accuracies: get_accuracies_from_threshold(processed_response, i, {
+        round_int: 15
+      })
+    });
+  }
+  return newArray;
+}
 ```
 
 
@@ -286,25 +306,6 @@ response = queryBatchApi(username, password, data)
 
 ```{ojs}
 subset = processed_response.filter((d) => d.IC > Seuil)
-```
-
-```{ojs}
-ic_tx_classif = {
-  const newArray = [];
-  for (let i = 0; i <= 1; i += 0.01) {
-    let seuil = round(i, 2);
-    newArray.push({
-      seuils: seuil,
-      codif_auto:
-        processed_response.filter((d) => d.IC > seuil).length /
-        processed_response.length,
-      accuracies: get_accuracies_from_threshold(processed_response, i, {
-        round_int: 15
-      })
-    });
-  }
-  return newArray;
-}
 ```
 
 ```{ojs}
