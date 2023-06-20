@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.4.156">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,6 +80,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -100,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <meta property="og:title" content="Évaluation classification APE - Evaluation d’un modèle">
-<meta property="og:site-name" content="Évaluation classification APE">
+<meta property="og:site_name" content="Évaluation classification APE">
 </head>
 
 <body class="nav-fixed">
@@ -135,9 +140,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -217,96 +222,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas:</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas: </span></span>
 <span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a b c'</span></span>
 <span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="vs">                'd d d'</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>viewof quantile<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;&lt;div class="textstyled"&gt;Accuracy: </span><span class="sc">${</span>Accuracy<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;&lt;div class="textstyled"&gt;Seuil: </span><span class="sc">${</span>Seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="d" style="grid-area: d; position: relative;"&gt;</span><span class="sc">${</span>distrib<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="vs">                'e e e'</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>viewof quantile<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;&lt;div class="textstyled"&gt;Accuracy: </span><span class="sc">${</span>Accuracy<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;&lt;div class="textstyled"&gt;Seuil: </span><span class="sc">${</span>Seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="d" style="grid-area: d; position: relative;"&gt;</span><span class="sc">${</span>distrib<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="e" style="grid-area: e; position: relative;"&gt;</span><span class="sc">${</span>distrib_adjusted<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="46" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>grid2 <span class="op">=</span> <span class="cf">await</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="vs">              background: #fff;</span></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="vs">              margin: 0;</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas: </span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a'</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="vs">                'b'</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="vs">                'c'</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>codif_seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;</span><span class="sc">${</span>acc_seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;</span><span class="sc">${</span>acc_codif<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="68" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 67;"><span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>viewof quantile <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Taux de classification automatique"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">80</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="72" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 71;"><span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>distrib <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>  <span class="dt">round</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">screen</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="fl">0.7</span><span class="op">,</span></span>
-<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
-<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
-<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>      processed_response<span class="op">,</span></span>
-<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">binX</span>(</span>
-<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span></span>
-<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">x</span><span class="op">:</span> <span class="st">"IC"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"Result"</span><span class="op">,</span> <span class="dt">mixBlendMode</span><span class="op">:</span> <span class="st">"multiply"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> }</span>
-<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
-<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([Seuil]<span class="op">,</span> { <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> })</span>
-<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="92" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 91;"><span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>Seuil <span class="op">=</span> <span class="fu">round</span>(</span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile <span class="op">/</span> <span class="dv">100</span></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="102" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 101;"><span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>Accuracy <span class="op">=</span> <span class="fu">round</span>(d3<span class="op">.</span><span class="fu">mean</span>(subset<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Result</span>)) <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-9" data-nodetype="declaration">
 
 </div>
 </div>
@@ -315,22 +245,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="analyse-des-erreurs" class="level2">
 <h2 class="anchored" data-anchor-id="analyse-des-erreurs">Analyse des erreurs</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="108" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 107;"><span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">barY</span>(count_errors<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">15</span>)<span class="op">,</span> {</span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span></span>
-<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> <span class="st">"frequency"</span><span class="op">,</span></span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"-y"</span> }<span class="op">,</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="51" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 50;"><span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">barY</span>(count_errors<span class="op">.</span><span class="fu">slice</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">15</span>)<span class="op">,</span> {</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> <span class="st">"value"</span><span class="op">,</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> <span class="st">"frequency"</span><span class="op">,</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">sort</span><span class="op">:</span> { <span class="dt">x</span><span class="op">:</span> <span class="st">"-y"</span> }<span class="op">,</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-10" data-nodetype="expression">
+<div id="ojs-cell-5" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="117" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 116;"><span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>WrongPredictions <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="60" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 59;"><span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>viewof search <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">search</span>(subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-11" data-nodetype="declaration">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="64" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 63;"><span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>WrongPredictions <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">table</span>(search)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
 
 </div>
 </div>
@@ -339,42 +277,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="impact-du-seuil-de-reprise-sur-la-performance-et-le-taux" class="level2">
 <h2 class="anchored" data-anchor-id="impact-du-seuil-de-reprise-sur-la-performance-et-le-taux">Impact du seuil de reprise sur la performance et le taux</h2>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="124" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 123;"><span id="cb12-124"><a href="#cb12-124" aria-hidden="true" tabindex="-1"></a>codif_seuil <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb12-125"><a href="#cb12-125" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb12-126"><a href="#cb12-126" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb12-127"><a href="#cb12-127" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Taux de classification automatique (%)"</span><span class="op">,</span></span>
-<span id="cb12-128"><a href="#cb12-128" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb12-129"><a href="#cb12-129" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb12-130"><a href="#cb12-130" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb12-131"><a href="#cb12-131" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Seuil choisi"</span></span>
-<span id="cb12-132"><a href="#cb12-132" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb12-133"><a href="#cb12-133" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb12-134"><a href="#cb12-134" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
-<span id="cb12-135"><a href="#cb12-135" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
-<span id="cb12-136"><a href="#cb12-136" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
-<span id="cb12-137"><a href="#cb12-137" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
-<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
-<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
-<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
-<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
-<span id="cb12-145"><a href="#cb12-145" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
-<span id="cb12-146"><a href="#cb12-146" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
-<span id="cb12-147"><a href="#cb12-147" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
-<span id="cb12-148"><a href="#cb12-148" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
-<span id="cb12-149"><a href="#cb12-149" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
-<span id="cb12-150"><a href="#cb12-150" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb12-151"><a href="#cb12-151" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb12-152"><a href="#cb12-152" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
-<span id="cb12-153"><a href="#cb12-153" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
-<span id="cb12-154"><a href="#cb12-154" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">codif_auto</span><span class="op">,</span></span>
-<span id="cb12-155"><a href="#cb12-155" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
-<span id="cb12-156"><a href="#cb12-156" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb12-157"><a href="#cb12-157" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb12-158"><a href="#cb12-158" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
-<span id="cb12-159"><a href="#cb12-159" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="71" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 70;"><span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>grid2 <span class="op">=</span> <span class="cf">await</span> <span class="fu">html</span><span class="vs">`&lt;div style="</span></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a><span class="vs">              background: #fff;</span></span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a><span class="vs">              margin: 0;</span></span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a><span class="vs">              border: none ;</span></span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a><span class="vs">              display: grid;</span></span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a><span class="vs">              width: </span><span class="sc">${</span><span class="bu">screen</span><span class="op">.</span><span class="at">width</span><span class="sc">}</span><span class="vs">;</span></span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-template-areas: </span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="vs">                'a'</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="vs">                'b'</span></span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a><span class="vs">                'c'</span></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a><span class="vs">                ;</span></span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a><span class="vs">              grid-gap: 10px;</span></span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a><span class="vs">            "&gt;</span></span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="a" style="grid-area: a; position: relative;"&gt;</span><span class="sc">${</span>codif_seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="b" style="grid-area: b; position: relative;"&gt;</span><span class="sc">${</span>acc_seuil<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a><span class="vs">              &lt;div name="c" style="grid-area: c; position: relative;"&gt;</span><span class="sc">${</span>acc_codif<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a><span class="vs">            &lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<!-- Plots  -->
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="93" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 92;"><span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>viewof quantile <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Taux de classification automatique"</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">80</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="97" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 96;"><span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>distrib <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>  <span class="dt">round</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">screen</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="fl">0.7</span><span class="op">,</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>      processed_response<span class="op">,</span></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">binX</span>(</span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">y</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span></span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>        { <span class="dt">x</span><span class="op">:</span> <span class="st">"IC"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"Result"</span><span class="op">,</span> <span class="dt">mixBlendMode</span><span class="op">:</span> <span class="st">"multiply"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([Seuil]<span class="op">,</span> { <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> })</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="116" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 115;"><span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>distrib_adjusted <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">screen</span><span class="op">.</span><span class="at">width</span> <span class="op">*</span> <span class="fl">0.7</span><span class="op">,</span></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> { <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">scheme</span><span class="op">:</span> <span class="st">"BuRd"</span><span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">rectY</span>(</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>      processed_response<span class="op">,</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">normalizeY</span>(</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>        <span class="st">"sum"</span><span class="op">,</span> <span class="co">// normalize each series by the sum per series</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>        Plot<span class="op">.</span><span class="fu">binX</span>(</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>          { <span class="dt">y2</span><span class="op">:</span> <span class="st">"count"</span> }<span class="op">,</span> <span class="co">// disable implicit stack transform</span></span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>          { <span class="dt">x</span><span class="op">:</span> <span class="st">"IC"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"Result"</span><span class="op">,</span> <span class="dt">mixBlendMode</span><span class="op">:</span> <span class="st">"multiply"</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])<span class="op">,</span></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([Seuil]<span class="op">,</span> { <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">tip</span><span class="op">:</span> <span class="kw">true</span> })</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb12" data-startfrom="138" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 137;"><span id="cb12-138"><a href="#cb12-138" aria-hidden="true" tabindex="-1"></a>Seuil <span class="op">=</span> <span class="fu">round</span>(</span>
+<span id="cb12-139"><a href="#cb12-139" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
+<span id="cb12-140"><a href="#cb12-140" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
+<span id="cb12-141"><a href="#cb12-141" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb12-142"><a href="#cb12-142" aria-hidden="true" tabindex="-1"></a>  )<span class="op">,</span></span>
+<span id="cb12-143"><a href="#cb12-143" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span></span>
+<span id="cb12-144"><a href="#cb12-144" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-12" data-nodetype="declaration">
 
@@ -382,42 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="163" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 162;"><span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>acc_seuil <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Accuracy (%)"</span><span class="op">,</span></span>
-<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Seuil choisi"</span></span>
-<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
-<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
-<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
-<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
-<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
-<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
-<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
-<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
-<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
-<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
-<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
-<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
-<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
-<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
-<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
-<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span></span>
-<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
-<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
-<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="148" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 147;"><span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a>Accuracy <span class="op">=</span> <span class="fu">round</span>(d3<span class="op">.</span><span class="fu">mean</span>(subset<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Result</span>)) <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-13" data-nodetype="declaration">
 
@@ -425,43 +381,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="202" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 201;"><span id="cb14-202"><a href="#cb14-202" aria-hidden="true" tabindex="-1"></a>acc_codif <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb14-203"><a href="#cb14-203" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
-<span id="cb14-204"><a href="#cb14-204" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
-<span id="cb14-205"><a href="#cb14-205" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Accuracy (%)"</span><span class="op">,</span></span>
-<span id="cb14-206"><a href="#cb14-206" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb14-207"><a href="#cb14-207" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb14-208"><a href="#cb14-208" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
-<span id="cb14-209"><a href="#cb14-209" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Taux de classification automatique (%)"</span><span class="op">,</span></span>
-<span id="cb14-210"><a href="#cb14-210" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
-<span id="cb14-211"><a href="#cb14-211" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
-<span id="cb14-212"><a href="#cb14-212" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb14-213"><a href="#cb14-213" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
-<span id="cb14-214"><a href="#cb14-214" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
-<span id="cb14-215"><a href="#cb14-215" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
-<span id="cb14-216"><a href="#cb14-216" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
-<span id="cb14-217"><a href="#cb14-217" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
-<span id="cb14-218"><a href="#cb14-218" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
-<span id="cb14-219"><a href="#cb14-219" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
-<span id="cb14-220"><a href="#cb14-220" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
-<span id="cb14-221"><a href="#cb14-221" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
-<span id="cb14-222"><a href="#cb14-222" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
-<span id="cb14-223"><a href="#cb14-223" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
-<span id="cb14-224"><a href="#cb14-224" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
-<span id="cb14-225"><a href="#cb14-225" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
-<span id="cb14-226"><a href="#cb14-226" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
-<span id="cb14-227"><a href="#cb14-227" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
-<span id="cb14-228"><a href="#cb14-228" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
-<span id="cb14-229"><a href="#cb14-229" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb14-230"><a href="#cb14-230" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
-<span id="cb14-231"><a href="#cb14-231" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
-<span id="cb14-232"><a href="#cb14-232" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">codif_auto</span><span class="op">,</span></span>
-<span id="cb14-233"><a href="#cb14-233" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span></span>
-<span id="cb14-234"><a href="#cb14-234" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
-<span id="cb14-235"><a href="#cb14-235" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb14-236"><a href="#cb14-236" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
-<span id="cb14-237"><a href="#cb14-237" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
-<span id="cb14-238"><a href="#cb14-238" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="152" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 151;"><span id="cb14-152"><a href="#cb14-152" aria-hidden="true" tabindex="-1"></a>codif_seuil <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb14-153"><a href="#cb14-153" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb14-154"><a href="#cb14-154" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Taux de classification automatique (%)"</span><span class="op">,</span></span>
+<span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Seuil choisi"</span></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
+<span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
+<span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
+<span id="cb14-169"><a href="#cb14-169" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
+<span id="cb14-170"><a href="#cb14-170" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
+<span id="cb14-171"><a href="#cb14-171" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
+<span id="cb14-172"><a href="#cb14-172" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
+<span id="cb14-173"><a href="#cb14-173" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
+<span id="cb14-174"><a href="#cb14-174" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
+<span id="cb14-175"><a href="#cb14-175" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
+<span id="cb14-176"><a href="#cb14-176" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
+<span id="cb14-177"><a href="#cb14-177" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
+<span id="cb14-178"><a href="#cb14-178" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb14-179"><a href="#cb14-179" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb14-180"><a href="#cb14-180" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
+<span id="cb14-181"><a href="#cb14-181" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
+<span id="cb14-182"><a href="#cb14-182" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">codif_auto</span><span class="op">,</span></span>
+<span id="cb14-183"><a href="#cb14-183" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
+<span id="cb14-184"><a href="#cb14-184" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb14-185"><a href="#cb14-185" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb14-186"><a href="#cb14-186" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb14-187"><a href="#cb14-187" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-14" data-nodetype="declaration">
 
@@ -469,36 +424,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="243" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 242;"><span id="cb15-243"><a href="#cb15-243" aria-hidden="true" tabindex="-1"></a>ic_tx_classif <span class="op">=</span> {</span>
-<span id="cb15-244"><a href="#cb15-244" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> newArray <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb15-245"><a href="#cb15-245" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="fl">1.01</span><span class="op">;</span> i <span class="op">+=</span> <span class="fl">0.01</span>) {</span>
-<span id="cb15-246"><a href="#cb15-246" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> seuil <span class="op">=</span> <span class="fu">round</span>(i<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb15-247"><a href="#cb15-247" aria-hidden="true" tabindex="-1"></a>    newArray<span class="op">.</span><span class="fu">push</span>({</span>
-<span id="cb15-248"><a href="#cb15-248" aria-hidden="true" tabindex="-1"></a>      <span class="dt">seuils</span><span class="op">:</span> seuil<span class="op">,</span></span>
-<span id="cb15-249"><a href="#cb15-249" aria-hidden="true" tabindex="-1"></a>      <span class="dt">codif_auto</span><span class="op">:</span></span>
-<span id="cb15-250"><a href="#cb15-250" aria-hidden="true" tabindex="-1"></a>        processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> seuil)<span class="op">.</span><span class="at">length</span> <span class="op">/</span></span>
-<span id="cb15-251"><a href="#cb15-251" aria-hidden="true" tabindex="-1"></a>        processed_response<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
-<span id="cb15-252"><a href="#cb15-252" aria-hidden="true" tabindex="-1"></a>      <span class="dt">accuracies</span><span class="op">:</span> <span class="fu">get_accuracies_from_threshold</span>(processed_response<span class="op">,</span> i<span class="op">,</span> {</span>
-<span id="cb15-253"><a href="#cb15-253" aria-hidden="true" tabindex="-1"></a>        <span class="dt">round_int</span><span class="op">:</span> <span class="dv">15</span></span>
-<span id="cb15-254"><a href="#cb15-254" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb15-255"><a href="#cb15-255" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
-<span id="cb15-256"><a href="#cb15-256" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb15-257"><a href="#cb15-257" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> newArray<span class="op">;</span></span>
-<span id="cb15-258"><a href="#cb15-258" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="191" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 190;"><span id="cb15-191"><a href="#cb15-191" aria-hidden="true" tabindex="-1"></a>acc_seuil <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb15-192"><a href="#cb15-192" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb15-193"><a href="#cb15-193" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb15-194"><a href="#cb15-194" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Accuracy (%)"</span><span class="op">,</span></span>
+<span id="cb15-195"><a href="#cb15-195" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb15-196"><a href="#cb15-196" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb15-197"><a href="#cb15-197" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb15-198"><a href="#cb15-198" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Seuil choisi"</span></span>
+<span id="cb15-199"><a href="#cb15-199" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb15-200"><a href="#cb15-200" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb15-201"><a href="#cb15-201" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
+<span id="cb15-202"><a href="#cb15-202" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
+<span id="cb15-203"><a href="#cb15-203" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
+<span id="cb15-204"><a href="#cb15-204" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb15-205"><a href="#cb15-205" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
+<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
+<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
+<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"seuils"</span><span class="op">,</span></span>
+<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
+<span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
+<span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
+<span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
+<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
+<span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
+<span id="cb15-217"><a href="#cb15-217" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb15-218"><a href="#cb15-218" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb15-219"><a href="#cb15-219" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
+<span id="cb15-220"><a href="#cb15-220" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
+<span id="cb15-221"><a href="#cb15-221" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span></span>
+<span id="cb15-222"><a href="#cb15-222" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
+<span id="cb15-223"><a href="#cb15-223" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb15-224"><a href="#cb15-224" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb15-226"><a href="#cb15-226" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-15" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<!-- Data stuffs -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="265" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 264;"><span id="cb16-265"><a href="#cb16-265" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> db<span class="op">.</span><span class="fu">query</span>(</span>
-<span id="cb16-266"><a href="#cb16-266" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`</span></span>
-<span id="cb16-267"><a href="#cb16-267" aria-hidden="true" tabindex="-1"></a><span class="vs">SELECT text_description, type_, nature, surface, event, code</span></span>
-<span id="cb16-268"><a href="#cb16-268" aria-hidden="true" tabindex="-1"></a><span class="vs">FROM liasses</span></span>
-<span id="cb16-269"><a href="#cb16-269" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
-<span id="cb16-270"><a href="#cb16-270" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="230" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 229;"><span id="cb16-230"><a href="#cb16-230" aria-hidden="true" tabindex="-1"></a>acc_codif <span class="op">=</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb16-231"><a href="#cb16-231" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb16-232"><a href="#cb16-232" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb16-233"><a href="#cb16-233" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ Accuracy (%)"</span><span class="op">,</span></span>
+<span id="cb16-234"><a href="#cb16-234" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb16-235"><a href="#cb16-235" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb16-236"><a href="#cb16-236" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb16-237"><a href="#cb16-237" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"→ Taux de classification automatique (%)"</span><span class="op">,</span></span>
+<span id="cb16-238"><a href="#cb16-238" aria-hidden="true" tabindex="-1"></a>    <span class="dt">percent</span><span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb16-239"><a href="#cb16-239" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb16-240"><a href="#cb16-240" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb16-241"><a href="#cb16-241" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(ic_tx_classif<span class="op">,</span> {</span>
+<span id="cb16-242"><a href="#cb16-242" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
+<span id="cb16-243"><a href="#cb16-243" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
+<span id="cb16-244"><a href="#cb16-244" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb16-245"><a href="#cb16-245" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb16-246"><a href="#cb16-246" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb16-247"><a href="#cb16-247" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>(</span>
+<span id="cb16-248"><a href="#cb16-248" aria-hidden="true" tabindex="-1"></a>      ic_tx_classif<span class="op">,</span></span>
+<span id="cb16-249"><a href="#cb16-249" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">pointer</span>({</span>
+<span id="cb16-250"><a href="#cb16-250" aria-hidden="true" tabindex="-1"></a>        <span class="dt">x</span><span class="op">:</span> <span class="st">"codif_auto"</span><span class="op">,</span></span>
+<span id="cb16-251"><a href="#cb16-251" aria-hidden="true" tabindex="-1"></a>        <span class="dt">y</span><span class="op">:</span> <span class="st">"accuracies"</span><span class="op">,</span></span>
+<span id="cb16-252"><a href="#cb16-252" aria-hidden="true" tabindex="-1"></a>        <span class="dt">title</span><span class="op">:</span> (d) <span class="kw">=&gt;</span> <span class="vs">`Accuracy : </span><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}\n</span><span class="vs">Seuil : </span><span class="sc">${</span><span class="fu">round</span>(</span>
+<span id="cb16-253"><a href="#cb16-253" aria-hidden="true" tabindex="-1"></a>          d<span class="op">.</span><span class="at">seuils</span><span class="op">,</span></span>
+<span id="cb16-254"><a href="#cb16-254" aria-hidden="true" tabindex="-1"></a>          <span class="dv">2</span></span>
+<span id="cb16-255"><a href="#cb16-255" aria-hidden="true" tabindex="-1"></a>        )<span class="sc">}\n</span><span class="vs">Taux classification automatique: </span></span>
+<span id="cb16-256"><a href="#cb16-256" aria-hidden="true" tabindex="-1"></a><span class="sc">${</span><span class="fu">round</span>(d<span class="op">.</span><span class="at">codif_auto</span> <span class="op">*</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">2</span>)<span class="sc">}</span><span class="vs"> %`</span></span>
+<span id="cb16-257"><a href="#cb16-257" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb16-258"><a href="#cb16-258" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb16-259"><a href="#cb16-259" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">tip</span>([<span class="vs">`Seuil à 0.6`</span>]<span class="op">,</span> {</span>
+<span id="cb16-260"><a href="#cb16-260" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">codif_auto</span><span class="op">,</span></span>
+<span id="cb16-261"><a href="#cb16-261" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> ic_tx_classif[<span class="dv">60</span>]<span class="op">.</span><span class="at">accuracies</span><span class="op">,</span></span>
+<span id="cb16-262"><a href="#cb16-262" aria-hidden="true" tabindex="-1"></a>      <span class="dt">anchor</span><span class="op">:</span> <span class="st">"bottom"</span></span>
+<span id="cb16-263"><a href="#cb16-263" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb16-264"><a href="#cb16-264" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb16-265"><a href="#cb16-265" aria-hidden="true" tabindex="-1"></a>  <span class="dt">color</span><span class="op">:</span> { <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span> }</span>
+<span id="cb16-266"><a href="#cb16-266" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-16" data-nodetype="declaration">
 
@@ -506,25 +511,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="274" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 273;"><span id="cb17-274"><a href="#cb17-274" aria-hidden="true" tabindex="-1"></a>transformedData <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
-<span id="cb17-275"><a href="#cb17-275" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
-<span id="cb17-276"><a href="#cb17-276" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
-<span id="cb17-277"><a href="#cb17-277" aria-hidden="true" tabindex="-1"></a>      acc[key] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb17-278"><a href="#cb17-278" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-279"><a href="#cb17-279" aria-hidden="true" tabindex="-1"></a>    acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
-<span id="cb17-280"><a href="#cb17-280" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb17-281"><a href="#cb17-281" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
-<span id="cb17-282"><a href="#cb17-282" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> {})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="271" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 270;"><span id="cb17-271"><a href="#cb17-271" aria-hidden="true" tabindex="-1"></a>ic_tx_classif <span class="op">=</span> {</span>
+<span id="cb17-272"><a href="#cb17-272" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> newArray <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb17-273"><a href="#cb17-273" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;=</span> <span class="fl">1.01</span><span class="op">;</span> i <span class="op">+=</span> <span class="fl">0.01</span>) {</span>
+<span id="cb17-274"><a href="#cb17-274" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> seuil <span class="op">=</span> <span class="fu">round</span>(i<span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb17-275"><a href="#cb17-275" aria-hidden="true" tabindex="-1"></a>    newArray<span class="op">.</span><span class="fu">push</span>({</span>
+<span id="cb17-276"><a href="#cb17-276" aria-hidden="true" tabindex="-1"></a>      <span class="dt">seuils</span><span class="op">:</span> seuil<span class="op">,</span></span>
+<span id="cb17-277"><a href="#cb17-277" aria-hidden="true" tabindex="-1"></a>      <span class="dt">codif_auto</span><span class="op">:</span></span>
+<span id="cb17-278"><a href="#cb17-278" aria-hidden="true" tabindex="-1"></a>        processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> seuil)<span class="op">.</span><span class="at">length</span> <span class="op">/</span></span>
+<span id="cb17-279"><a href="#cb17-279" aria-hidden="true" tabindex="-1"></a>        processed_response<span class="op">.</span><span class="at">length</span><span class="op">,</span></span>
+<span id="cb17-280"><a href="#cb17-280" aria-hidden="true" tabindex="-1"></a>      <span class="dt">accuracies</span><span class="op">:</span> <span class="fu">get_accuracies_from_threshold</span>(processed_response<span class="op">,</span> i<span class="op">,</span> {</span>
+<span id="cb17-281"><a href="#cb17-281" aria-hidden="true" tabindex="-1"></a>        <span class="dt">round_int</span><span class="op">:</span> <span class="dv">15</span></span>
+<span id="cb17-282"><a href="#cb17-282" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb17-283"><a href="#cb17-283" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb17-284"><a href="#cb17-284" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-285"><a href="#cb17-285" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> newArray<span class="op">;</span></span>
+<span id="cb17-286"><a href="#cb17-286" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-17" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<!-- Data stuffs -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="286" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 285;"><span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> DuckDBClient<span class="op">.</span><span class="fu">of</span>({</span>
-<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a>  <span class="dt">liasses</span><span class="op">:</span> <span class="cf">await</span> csvfile<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="293" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 292;"><span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> db<span class="op">.</span><span class="fu">query</span>(</span>
+<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a>  <span class="vs">`</span></span>
+<span id="cb18-295"><a href="#cb18-295" aria-hidden="true" tabindex="-1"></a><span class="vs">SELECT text_description, type_, nature, surface, event, code</span></span>
+<span id="cb18-296"><a href="#cb18-296" aria-hidden="true" tabindex="-1"></a><span class="vs">FROM liasses</span></span>
+<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
+<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-18" data-nodetype="declaration">
 
@@ -532,14 +548,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="292" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 291;"><span id="cb19-292"><a href="#cb19-292" aria-hidden="true" tabindex="-1"></a>processed_response <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(response<span class="op">.</span><span class="at">IC</span>)<span class="op">.</span><span class="fu">map</span>((key) <span class="kw">=&gt;</span> ({</span>
-<span id="cb19-293"><a href="#cb19-293" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IC</span><span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key] <span class="op">&gt;</span> <span class="dv">1</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-16</span> <span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key]<span class="op">,</span></span>
-<span id="cb19-294"><a href="#cb19-294" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Probability</span><span class="op">:</span> response<span class="op">.</span><span class="at">Probability</span>[key]<span class="op">,</span></span>
-<span id="cb19-295"><a href="#cb19-295" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Prediction</span><span class="op">:</span> response<span class="op">.</span><span class="at">Prediction</span>[key]<span class="op">,</span></span>
-<span id="cb19-296"><a href="#cb19-296" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Code</span><span class="op">:</span> response<span class="op">.</span><span class="at">Code</span>[key]<span class="op">,</span></span>
-<span id="cb19-297"><a href="#cb19-297" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Result</span><span class="op">:</span> response<span class="op">.</span><span class="at">Result</span>[key]<span class="op">,</span></span>
-<span id="cb19-298"><a href="#cb19-298" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Lib</span><span class="op">:</span> response<span class="op">.</span><span class="at">Lib</span>[key]</span>
-<span id="cb19-299"><a href="#cb19-299" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="302" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 301;"><span id="cb19-302"><a href="#cb19-302" aria-hidden="true" tabindex="-1"></a>transformedData <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
+<span id="cb19-303"><a href="#cb19-303" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
+<span id="cb19-304"><a href="#cb19-304" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
+<span id="cb19-305"><a href="#cb19-305" aria-hidden="true" tabindex="-1"></a>      acc[key] <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb19-306"><a href="#cb19-306" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-307"><a href="#cb19-307" aria-hidden="true" tabindex="-1"></a>    acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
+<span id="cb19-308"><a href="#cb19-308" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb19-309"><a href="#cb19-309" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
+<span id="cb19-310"><a href="#cb19-310" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span> {})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-19" data-nodetype="declaration">
 
@@ -547,7 +564,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb20" data-startfrom="303" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 302;"><span id="cb20-303"><a href="#cb20-303" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb20" data-startfrom="314" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 313;"><span id="cb20-314"><a href="#cb20-314" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> DuckDBClient<span class="op">.</span><span class="fu">of</span>({</span>
+<span id="cb20-315"><a href="#cb20-315" aria-hidden="true" tabindex="-1"></a>  <span class="dt">liasses</span><span class="op">:</span> <span class="cf">await</span> csvfile<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb20-316"><a href="#cb20-316" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-20" data-nodetype="declaration">
 
@@ -555,7 +574,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb21" data-startfrom="307" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 306;"><span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> Seuil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb21" data-startfrom="320" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 319;"><span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a>processed_response <span class="op">=</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">keys</span>(response<span class="op">.</span><span class="at">IC</span>)<span class="op">.</span><span class="fu">map</span>((key) <span class="kw">=&gt;</span> ({</span>
+<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>  <span class="dt">IC</span><span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key] <span class="op">==</span> <span class="dv">1</span> <span class="op">?</span> response<span class="op">.</span><span class="at">IC</span>[key] <span class="op">-</span> <span class="fl">1e-16</span> <span class="op">:</span> response<span class="op">.</span><span class="at">IC</span>[key]<span class="op">,</span></span>
+<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Probability</span><span class="op">:</span> response<span class="op">.</span><span class="at">Probability</span>[key]<span class="op">,</span></span>
+<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Prediction</span><span class="op">:</span> response<span class="op">.</span><span class="at">Prediction</span>[key]<span class="op">,</span></span>
+<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Code</span><span class="op">:</span> response<span class="op">.</span><span class="at">Code</span>[key]<span class="op">,</span></span>
+<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Result</span><span class="op">:</span> response<span class="op">.</span><span class="at">Result</span>[key]<span class="op">,</span></span>
+<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Lib</span><span class="op">:</span> response<span class="op">.</span><span class="at">Lib</span>[key]</span>
+<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a>}))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-21" data-nodetype="declaration">
 
@@ -563,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb22" data-startfrom="311" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 310;"><span id="cb22-311"><a href="#cb22-311" aria-hidden="true" tabindex="-1"></a>quantiles <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> <span class="dv">101</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i<span class="op">/</span><span class="dv">100</span>) <span class="co">// Array with quantile values from 0 to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb22" data-startfrom="331" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 330;"><span id="cb22-331"><a href="#cb22-331" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-22" data-nodetype="declaration">
 
@@ -571,12 +597,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb23" data-startfrom="315" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 314;"><span id="cb23-315"><a href="#cb23-315" aria-hidden="true" tabindex="-1"></a>seuils <span class="op">=</span> quantiles<span class="op">.</span><span class="fu">map</span>((quantile) <span class="kw">=&gt;</span></span>
-<span id="cb23-316"><a href="#cb23-316" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
-<span id="cb23-317"><a href="#cb23-317" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
-<span id="cb23-318"><a href="#cb23-318" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile</span>
-<span id="cb23-319"><a href="#cb23-319" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb23-320"><a href="#cb23-320" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb23" data-startfrom="335" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 334;"><span id="cb23-335"><a href="#cb23-335" aria-hidden="true" tabindex="-1"></a>subset <span class="op">=</span> processed_response<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> Seuil)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-23" data-nodetype="declaration">
 
@@ -584,49 +605,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb24" data-startfrom="324" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 323;"><span id="cb24-324"><a href="#cb24-324" aria-hidden="true" tabindex="-1"></a>count_errors <span class="op">=</span> <span class="fu">valueCounts</span>(</span>
-<span id="cb24-325"><a href="#cb24-325" aria-hidden="true" tabindex="-1"></a>  subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>)<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Code</span>)</span>
-<span id="cb24-326"><a href="#cb24-326" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb24" data-startfrom="339" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 338;"><span id="cb24-339"><a href="#cb24-339" aria-hidden="true" tabindex="-1"></a>quantiles <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> <span class="dv">101</span> }<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i<span class="op">/</span><span class="dv">100</span>) <span class="co">// Array with quantile values from 0 to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-24" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<!-- Functions -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb25" data-startfrom="333" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 332;"><span id="cb25-333"><a href="#cb25-333" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data) {</span>
-<span id="cb25-334"><a href="#cb25-334" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://codification-ape.lab.sspcloud.fr/evaluation"</span><span class="op">;</span></span>
-<span id="cb25-335"><a href="#cb25-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-336"><a href="#cb25-336" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create the request body</span></span>
-<span id="cb25-337"><a href="#cb25-337" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> request_body <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
-<span id="cb25-338"><a href="#cb25-338" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
-<span id="cb25-339"><a href="#cb25-339" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
-<span id="cb25-340"><a href="#cb25-340" aria-hidden="true" tabindex="-1"></a>        acc[key] <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb25-341"><a href="#cb25-341" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb25-342"><a href="#cb25-342" aria-hidden="true" tabindex="-1"></a>      acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
-<span id="cb25-343"><a href="#cb25-343" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb25-344"><a href="#cb25-344" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> acc<span class="op">;</span></span>
-<span id="cb25-345"><a href="#cb25-345" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> {})<span class="op">;</span></span>
-<span id="cb25-346"><a href="#cb25-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-347"><a href="#cb25-347" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url<span class="op">,</span> {</span>
-<span id="cb25-348"><a href="#cb25-348" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
-<span id="cb25-349"><a href="#cb25-349" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> {</span>
-<span id="cb25-350"><a href="#cb25-350" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span><span class="op">,</span></span>
-<span id="cb25-351"><a href="#cb25-351" aria-hidden="true" tabindex="-1"></a>      <span class="dt">Authorization</span><span class="op">:</span> <span class="vs">`Basic </span><span class="sc">${</span><span class="fu">btoa</span>(<span class="vs">`</span><span class="sc">${</span>username<span class="sc">}</span><span class="vs">:</span><span class="sc">${</span>password<span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">`</span></span>
-<span id="cb25-352"><a href="#cb25-352" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
-<span id="cb25-353"><a href="#cb25-353" aria-hidden="true" tabindex="-1"></a>    <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(request_body)</span>
-<span id="cb25-354"><a href="#cb25-354" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb25-355"><a href="#cb25-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-356"><a href="#cb25-356" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">ok</span>) {</span>
-<span id="cb25-357"><a href="#cb25-357" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
-<span id="cb25-358"><a href="#cb25-358" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (response<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">400</span>) {</span>
-<span id="cb25-359"><a href="#cb25-359" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>((<span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>())<span class="op">.</span><span class="at">detail</span>)<span class="op">;</span></span>
-<span id="cb25-360"><a href="#cb25-360" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb25-361"><a href="#cb25-361" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Error occurred while querying the API."</span>)<span class="op">;</span></span>
-<span id="cb25-362"><a href="#cb25-362" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">;</span></span>
-<span id="cb25-363"><a href="#cb25-363" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb25-364"><a href="#cb25-364" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb25" data-startfrom="343" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 342;"><span id="cb25-343"><a href="#cb25-343" aria-hidden="true" tabindex="-1"></a>seuils <span class="op">=</span> quantiles<span class="op">.</span><span class="fu">map</span>((quantile) <span class="kw">=&gt;</span></span>
+<span id="cb25-344"><a href="#cb25-344" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">quantile</span>(</span>
+<span id="cb25-345"><a href="#cb25-345" aria-hidden="true" tabindex="-1"></a>    processed_response<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span>)<span class="op">,</span></span>
+<span id="cb25-346"><a href="#cb25-346" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="op">-</span> quantile</span>
+<span id="cb25-347"><a href="#cb25-347" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb25-348"><a href="#cb25-348" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-25" data-nodetype="declaration">
 
@@ -634,25 +626,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb26" data-startfrom="368" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 367;"><span id="cb26-368"><a href="#cb26-368" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">get_accuracies_from_threshold</span>(</span>
-<span id="cb26-369"><a href="#cb26-369" aria-hidden="true" tabindex="-1"></a>  data<span class="op">,</span></span>
-<span id="cb26-370"><a href="#cb26-370" aria-hidden="true" tabindex="-1"></a>  threshold<span class="op">,</span></span>
-<span id="cb26-371"><a href="#cb26-371" aria-hidden="true" tabindex="-1"></a>  { round_int <span class="op">=</span> <span class="dv">2</span> } <span class="op">=</span> {}</span>
-<span id="cb26-372"><a href="#cb26-372" aria-hidden="true" tabindex="-1"></a>) {</span>
-<span id="cb26-373"><a href="#cb26-373" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> acc <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(data<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> threshold)<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Result</span>))<span class="op">;</span></span>
-<span id="cb26-374"><a href="#cb26-374" aria-hidden="true" tabindex="-1"></a>  acc <span class="op">=</span> acc <span class="op">===</span> <span class="kw">undefined</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="fu">round</span>(acc<span class="op">,</span> round_int)<span class="op">;</span></span>
-<span id="cb26-375"><a href="#cb26-375" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
-<span id="cb26-376"><a href="#cb26-376" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb26" data-startfrom="352" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 351;"><span id="cb26-352"><a href="#cb26-352" aria-hidden="true" tabindex="-1"></a>count_errors <span class="op">=</span> <span class="fu">valueCounts</span>(</span>
+<span id="cb26-353"><a href="#cb26-353" aria-hidden="true" tabindex="-1"></a>  subset<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> <span class="dv">1</span> <span class="op">-</span> d<span class="op">.</span><span class="at">Result</span>)<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Code</span>)</span>
+<span id="cb26-354"><a href="#cb26-354" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-26" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
+<!-- Functions -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb27" data-startfrom="380" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 379;"><span id="cb27-380"><a href="#cb27-380" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">round</span>(d<span class="op">,</span> int) {</span>
-<span id="cb27-381"><a href="#cb27-381" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(d <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> int) <span class="op">/</span> <span class="dv">10</span> <span class="op">**</span> int<span class="op">;</span></span>
-<span id="cb27-382"><a href="#cb27-382" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb27" data-startfrom="361" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 360;"><span id="cb27-361"><a href="#cb27-361" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">queryBatchApi</span>(username<span class="op">,</span> password<span class="op">,</span> data) {</span>
+<span id="cb27-362"><a href="#cb27-362" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> url <span class="op">=</span> <span class="st">"https://codification-ape.lab.sspcloud.fr/evaluation"</span><span class="op">;</span></span>
+<span id="cb27-363"><a href="#cb27-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-364"><a href="#cb27-364" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create the request body</span></span>
+<span id="cb27-365"><a href="#cb27-365" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> request_body <span class="op">=</span> data<span class="op">.</span><span class="fu">reduce</span>((acc<span class="op">,</span> obj) <span class="kw">=&gt;</span> {</span>
+<span id="cb27-366"><a href="#cb27-366" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">const</span> [key<span class="op">,</span> value] <span class="kw">of</span> <span class="bu">Object</span><span class="op">.</span><span class="fu">entries</span>(obj)) {</span>
+<span id="cb27-367"><a href="#cb27-367" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="op">!</span>acc<span class="op">.</span><span class="fu">hasOwnProperty</span>(key)) {</span>
+<span id="cb27-368"><a href="#cb27-368" aria-hidden="true" tabindex="-1"></a>        acc[key] <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb27-369"><a href="#cb27-369" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb27-370"><a href="#cb27-370" aria-hidden="true" tabindex="-1"></a>      acc[key]<span class="op">.</span><span class="fu">push</span>(value)<span class="op">;</span></span>
+<span id="cb27-371"><a href="#cb27-371" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-372"><a href="#cb27-372" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> acc<span class="op">;</span></span>
+<span id="cb27-373"><a href="#cb27-373" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span> {})<span class="op">;</span></span>
+<span id="cb27-374"><a href="#cb27-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-375"><a href="#cb27-375" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> response <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(url<span class="op">,</span> {</span>
+<span id="cb27-376"><a href="#cb27-376" aria-hidden="true" tabindex="-1"></a>    <span class="dt">method</span><span class="op">:</span> <span class="st">"POST"</span><span class="op">,</span></span>
+<span id="cb27-377"><a href="#cb27-377" aria-hidden="true" tabindex="-1"></a>    <span class="dt">headers</span><span class="op">:</span> {</span>
+<span id="cb27-378"><a href="#cb27-378" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Content-Type"</span><span class="op">:</span> <span class="st">"application/json"</span><span class="op">,</span></span>
+<span id="cb27-379"><a href="#cb27-379" aria-hidden="true" tabindex="-1"></a>      <span class="dt">Authorization</span><span class="op">:</span> <span class="vs">`Basic </span><span class="sc">${</span><span class="fu">btoa</span>(<span class="vs">`</span><span class="sc">${</span>username<span class="sc">}</span><span class="vs">:</span><span class="sc">${</span>password<span class="sc">}</span><span class="vs">`</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb27-380"><a href="#cb27-380" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb27-381"><a href="#cb27-381" aria-hidden="true" tabindex="-1"></a>    <span class="dt">body</span><span class="op">:</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(request_body)</span>
+<span id="cb27-382"><a href="#cb27-382" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb27-383"><a href="#cb27-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-384"><a href="#cb27-384" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (response<span class="op">.</span><span class="at">ok</span>) {</span>
+<span id="cb27-385"><a href="#cb27-385" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb27-386"><a href="#cb27-386" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (response<span class="op">.</span><span class="at">status</span> <span class="op">===</span> <span class="dv">400</span>) {</span>
+<span id="cb27-387"><a href="#cb27-387" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>((<span class="cf">await</span> response<span class="op">.</span><span class="fu">json</span>())<span class="op">.</span><span class="at">detail</span>)<span class="op">;</span></span>
+<span id="cb27-388"><a href="#cb27-388" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb27-389"><a href="#cb27-389" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Error occurred while querying the API."</span>)<span class="op">;</span></span>
+<span id="cb27-390"><a href="#cb27-390" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response<span class="op">;</span></span>
+<span id="cb27-391"><a href="#cb27-391" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-392"><a href="#cb27-392" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-27" data-nodetype="declaration">
 
@@ -660,41 +676,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb28" data-startfrom="386" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 385;"><span id="cb28-386"><a href="#cb28-386" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">valueCounts</span>(array<span class="op">,</span> { freq <span class="op">=</span> <span class="kw">false</span> } <span class="op">=</span> {}) {</span>
-<span id="cb28-387"><a href="#cb28-387" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> counts <span class="op">=</span> {}<span class="op">;</span></span>
-<span id="cb28-388"><a href="#cb28-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-389"><a href="#cb28-389" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> array<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb28-390"><a href="#cb28-390" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> value <span class="op">=</span> array[i]<span class="op">;</span></span>
-<span id="cb28-391"><a href="#cb28-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-392"><a href="#cb28-392" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (counts[value]) {</span>
-<span id="cb28-393"><a href="#cb28-393" aria-hidden="true" tabindex="-1"></a>      counts[value]<span class="op">++;</span></span>
-<span id="cb28-394"><a href="#cb28-394" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb28-395"><a href="#cb28-395" aria-hidden="true" tabindex="-1"></a>      counts[value] <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb28-396"><a href="#cb28-396" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb28-397"><a href="#cb28-397" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb28-398"><a href="#cb28-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-399"><a href="#cb28-399" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb28-400"><a href="#cb28-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-401"><a href="#cb28-401" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arrayLength <span class="op">=</span> array<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
-<span id="cb28-402"><a href="#cb28-402" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> value <span class="kw">in</span> counts) {</span>
-<span id="cb28-403"><a href="#cb28-403" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> frequency <span class="op">=</span> freq <span class="op">?</span> counts[value] <span class="op">/</span> arrayLength <span class="op">:</span> counts[value]<span class="op">;</span></span>
-<span id="cb28-404"><a href="#cb28-404" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="fu">push</span>({ <span class="dt">value</span><span class="op">:</span> value<span class="op">,</span> <span class="dt">frequency</span><span class="op">:</span> frequency })<span class="op">;</span></span>
-<span id="cb28-405"><a href="#cb28-405" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb28-406"><a href="#cb28-406" aria-hidden="true" tabindex="-1"></a>  result<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">frequency</span> <span class="op">-</span> a<span class="op">.</span><span class="at">frequency</span>)<span class="op">;</span> <span class="co">// Sort by frequency in descending order</span></span>
-<span id="cb28-407"><a href="#cb28-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-408"><a href="#cb28-408" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
-<span id="cb28-409"><a href="#cb28-409" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb28" data-startfrom="396" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 395;"><span id="cb28-396"><a href="#cb28-396" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">get_accuracies_from_threshold</span>(</span>
+<span id="cb28-397"><a href="#cb28-397" aria-hidden="true" tabindex="-1"></a>  data<span class="op">,</span></span>
+<span id="cb28-398"><a href="#cb28-398" aria-hidden="true" tabindex="-1"></a>  threshold<span class="op">,</span></span>
+<span id="cb28-399"><a href="#cb28-399" aria-hidden="true" tabindex="-1"></a>  { round_int <span class="op">=</span> <span class="dv">2</span> } <span class="op">=</span> {}</span>
+<span id="cb28-400"><a href="#cb28-400" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb28-401"><a href="#cb28-401" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> acc <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(data<span class="op">.</span><span class="fu">filter</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">IC</span> <span class="op">&gt;</span> threshold)<span class="op">.</span><span class="fu">map</span>((d) <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">Result</span>))<span class="op">;</span></span>
+<span id="cb28-402"><a href="#cb28-402" aria-hidden="true" tabindex="-1"></a>  acc <span class="op">=</span> acc <span class="op">===</span> <span class="kw">undefined</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="fu">round</span>(acc<span class="op">,</span> round_int)<span class="op">;</span></span>
+<span id="cb28-403"><a href="#cb28-403" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> acc<span class="op">;</span></span>
+<span id="cb28-404"><a href="#cb28-404" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-28" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
-<!-- Imports -->
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb29" data-startfrom="416" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 415;"><span id="cb29-416"><a href="#cb29-416" aria-hidden="true" tabindex="-1"></a>Plot <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb29" data-startfrom="408" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 407;"><span id="cb29-408"><a href="#cb29-408" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">round</span>(d<span class="op">,</span> int) {</span>
+<span id="cb29-409"><a href="#cb29-409" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(d <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> int) <span class="op">/</span> <span class="dv">10</span> <span class="op">**</span> int<span class="op">;</span></span>
+<span id="cb29-410"><a href="#cb29-410" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-29" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb30" data-startfrom="414" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 413;"><span id="cb30-414"><a href="#cb30-414" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">valueCounts</span>(array<span class="op">,</span> { freq <span class="op">=</span> <span class="kw">false</span> } <span class="op">=</span> {}) {</span>
+<span id="cb30-415"><a href="#cb30-415" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> counts <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb30-416"><a href="#cb30-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-417"><a href="#cb30-417" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> array<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb30-418"><a href="#cb30-418" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> value <span class="op">=</span> array[i]<span class="op">;</span></span>
+<span id="cb30-419"><a href="#cb30-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-420"><a href="#cb30-420" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (counts[value]) {</span>
+<span id="cb30-421"><a href="#cb30-421" aria-hidden="true" tabindex="-1"></a>      counts[value]<span class="op">++;</span></span>
+<span id="cb30-422"><a href="#cb30-422" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb30-423"><a href="#cb30-423" aria-hidden="true" tabindex="-1"></a>      counts[value] <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb30-424"><a href="#cb30-424" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb30-425"><a href="#cb30-425" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-426"><a href="#cb30-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-427"><a href="#cb30-427" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> result <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb30-428"><a href="#cb30-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-429"><a href="#cb30-429" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> arrayLength <span class="op">=</span> array<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb30-430"><a href="#cb30-430" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> value <span class="kw">in</span> counts) {</span>
+<span id="cb30-431"><a href="#cb30-431" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> frequency <span class="op">=</span> freq <span class="op">?</span> counts[value] <span class="op">/</span> arrayLength <span class="op">:</span> counts[value]<span class="op">;</span></span>
+<span id="cb30-432"><a href="#cb30-432" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="fu">push</span>({ <span class="dt">value</span><span class="op">:</span> value<span class="op">,</span> <span class="dt">frequency</span><span class="op">:</span> frequency })<span class="op">;</span></span>
+<span id="cb30-433"><a href="#cb30-433" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-434"><a href="#cb30-434" aria-hidden="true" tabindex="-1"></a>  result<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> b<span class="op">.</span><span class="at">frequency</span> <span class="op">-</span> a<span class="op">.</span><span class="at">frequency</span>)<span class="op">;</span> <span class="co">// Sort by frequency in descending order</span></span>
+<span id="cb30-435"><a href="#cb30-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-436"><a href="#cb30-436" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb30-437"><a href="#cb30-437" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-30" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<!-- Imports -->
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb31" data-startfrom="444" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 443;"><span id="cb31-444"><a href="#cb31-444" aria-hidden="true" tabindex="-1"></a>Plot <span class="op">=</span> <span class="pp">require</span>(<span class="st">"https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-31" data-nodetype="declaration">
 
 </div>
 </div>
@@ -704,9 +746,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 
 </main> <!-- /main -->
-
 <script type="ojs-module-contents">
-{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof username = Inputs.password({label: html`<b>Set username</b>`, value: \"\"})\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof password = Inputs.password({label: html`<b>Set password</b>`, value: \"\"})\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof csvfile = Inputs.file({\n  label: md`__Observations to evaluate__ 📁 ([Example here](https://raw.githubusercontent.com/ThomasFaria/codif-ape-API/main/website/exemples/exemple.csv))`,\n  accept: \".csv\",\n  required: true\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"grid = await html`<div style=\"\n              background: #fff;\n              margin: 0;\n              border: none ;\n              display: grid;\n              width: ${screen.width};\n              grid-template-areas:\n                'a b c'\n                'd d d'\n                ;\n              grid-gap: 10px;\n            \">\n              <div name=\"a\" style=\"grid-area: a; position: relative;\">${viewof quantile}</div>\n              <div name=\"b\" style=\"grid-area: b; position: relative;\"><div class=\"textstyled\">Accuracy: ${Accuracy}</div></div>\n              <div name=\"c\" style=\"grid-area: c; position: relative;\"><div class=\"textstyled\">Seuil: ${Seuil}</div></div>\n              <div name=\"d\" style=\"grid-area: d; position: relative;\">${distrib}</div>\n            </div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"grid2 = await html`<div style=\"\n              background: #fff;\n              margin: 0;\n              border: none ;\n              display: grid;\n              width: ${screen.width};\n              grid-template-areas: \n                'a'\n                'b'\n                'c'\n                ;\n              grid-gap: 10px;\n            \">\n              <div name=\"a\" style=\"grid-area: a; position: relative;\">${codif_seuil}</div>\n              <div name=\"b\" style=\"grid-area: b; position: relative;\">${acc_seuil}</div>\n              <div name=\"c\" style=\"grid-area: c; position: relative;\">${acc_codif}</div>\n            </div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"viewof quantile = Inputs.range([0, 100], {label: \"Taux de classification automatique\", step: 1, value: 80})\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"distrib = Plot.plot({\n  round: true,\n  width: screen.width * 0.7,\n  color: { scheme: \"BuRd\", legend: true },\n  marks: [\n    Plot.rectY(\n      processed_response,\n      Plot.binX(\n        { y: \"count\" },\n        { x: \"IC\", fill: \"Result\", mixBlendMode: \"multiply\", tip: true }\n      )\n    ),\n    Plot.ruleY([0]),\n    Plot.ruleX([Seuil], { strokeWidth: 2, tip: true })\n  ]\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"Seuil = round(\n  d3.quantile(\n    processed_response.map((d) => d.IC),\n    1 - quantile / 100\n  ),\n  2\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"Accuracy = round(d3.mean(subset.map((d) => d.Result)) * 100, 2)\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"Plot.barY(count_errors.slice(0, 15), {\n  x: \"value\",\n  y: \"frequency\",\n  sort: { x: \"-y\" },\n  tip: true\n}).plot()\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"codif_seuil = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Taux de classification automatique (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Seuil choisi\"\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"seuils\",\n      y: \"codif_auto\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"seuils\",\n        y: \"codif_auto\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].seuils,\n      y: ic_tx_classif[60].codif_auto,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"acc_seuil = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Accuracy (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Seuil choisi\"\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"seuils\",\n      y: \"accuracies\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"seuils\",\n        y: \"accuracies\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].seuils,\n      y: ic_tx_classif[60].accuracies,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-14","inline":false,"source":"acc_codif = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Accuracy (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Taux de classification automatique (%)\",\n    percent: true\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"codif_auto\",\n      y: \"accuracies\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"codif_auto\",\n        y: \"accuracies\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].codif_auto,\n      y: ic_tx_classif[60].accuracies,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-15","inline":false,"source":"ic_tx_classif = {\n  const newArray = [];\n  for (let i = 0; i <= 1.01; i += 0.01) {\n    let seuil = round(i, 2);\n    newArray.push({\n      seuils: seuil,\n      codif_auto:\n        processed_response.filter((d) => d.IC > seuil).length /\n        processed_response.length,\n      accuracies: get_accuracies_from_threshold(processed_response, i, {\n        round_int: 15\n      })\n    });\n  }\n  return newArray;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-16","inline":false,"source":"data = db.query(\n  `\nSELECT text_description, type_, nature, surface, event, code\nFROM liasses\n`\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-17","inline":false,"source":"transformedData = data.reduce((acc, obj) => {\n  for (const [key, value] of Object.entries(obj)) {\n    if (!acc.hasOwnProperty(key)) {\n      acc[key] = [];\n    }\n    acc[key].push(value);\n  }\n  return acc;\n}, {})\n"},{"methodName":"interpret","cellName":"ojs-cell-18","inline":false,"source":"db = DuckDBClient.of({\n  liasses: await csvfile.csv()\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-19","inline":false,"source":"processed_response = Object.keys(response.IC).map((key) => ({\n  IC: response.IC[key] > 1 ? 1 - 1e-16 : response.IC[key],\n  Probability: response.Probability[key],\n  Prediction: response.Prediction[key],\n  Code: response.Code[key],\n  Result: response.Result[key],\n  Lib: response.Lib[key]\n}))\n"},{"methodName":"interpret","cellName":"ojs-cell-20","inline":false,"source":"response = queryBatchApi(username, password, data)\n"},{"methodName":"interpret","cellName":"ojs-cell-21","inline":false,"source":"subset = processed_response.filter((d) => d.IC > Seuil)\n"},{"methodName":"interpret","cellName":"ojs-cell-22","inline":false,"source":"quantiles = Array.from({ length: 101 }, (_, i) => i/100) // Array with quantile values from 0 to 1\n"},{"methodName":"interpret","cellName":"ojs-cell-23","inline":false,"source":"seuils = quantiles.map((quantile) =>\n  d3.quantile(\n    processed_response.map((d) => d.IC),\n    1 - quantile\n  )\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-24","inline":false,"source":"count_errors = valueCounts(\n  subset.filter((d) => 1 - d.Result).map((d) => d.Code)\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-25","inline":false,"source":"async function queryBatchApi(username, password, data) {\n  const url = \"https://codification-ape.lab.sspcloud.fr/evaluation\";\n\n  // Create the request body\n  const request_body = data.reduce((acc, obj) => {\n    for (const [key, value] of Object.entries(obj)) {\n      if (!acc.hasOwnProperty(key)) {\n        acc[key] = [];\n      }\n      acc[key].push(value);\n    }\n    return acc;\n  }, {});\n\n  const response = await fetch(url, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      Authorization: `Basic ${btoa(`${username}:${password}`)}`\n    },\n    body: JSON.stringify(request_body)\n  });\n\n  if (response.ok) {\n    return response.json();\n  } else if (response.status === 400) {\n    console.log((await response.json()).detail);\n  } else {\n    console.log(\"Error occurred while querying the API.\");\n    return response;\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-26","inline":false,"source":"function get_accuracies_from_threshold(\n  data,\n  threshold,\n  { round_int = 2 } = {}\n) {\n  let acc = d3.mean(data.filter((d) => d.IC > threshold).map((d) => d.Result));\n  acc = acc === undefined ? 1 : round(acc, round_int);\n  return acc;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-27","inline":false,"source":"function round(d, int) {\n  return Math.round(d * 10 ** int) / 10 ** int;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-28","inline":false,"source":"function valueCounts(array, { freq = false } = {}) {\n  const counts = {};\n\n  for (let i = 0; i < array.length; i++) {\n    const value = array[i];\n\n    if (counts[value]) {\n      counts[value]++;\n    } else {\n      counts[value] = 1;\n    }\n  }\n\n  const result = [];\n\n  const arrayLength = array.length;\n  for (const value in counts) {\n    const frequency = freq ? counts[value] / arrayLength : counts[value];\n    result.push({ value: value, frequency: frequency });\n  }\n  result.sort((a, b) => b.frequency - a.frequency); // Sort by frequency in descending order\n\n  return result;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-29","inline":false,"source":"Plot = require(\"https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js\")\n"},{"methodName":"interpretQuiet","source":"shinyInput('username')"},{"methodName":"interpretQuiet","source":"shinyInput('password')"},{"methodName":"interpretQuiet","source":"shinyInput('csvfile')"},{"methodName":"interpretQuiet","source":"shinyInput('quantile')"}]}
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"viewof username = Inputs.password({label: html`<b>Set username</b>`, value: \"\"})\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"viewof password = Inputs.password({label: html`<b>Set password</b>`, value: \"\"})\n\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof csvfile = Inputs.file({\n  label: md`__Observations to evaluate__ 📁 ([Example here](https://raw.githubusercontent.com/ThomasFaria/codif-ape-API/main/website/exemples/exemple.csv))`,\n  accept: \".csv\",\n  required: true\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"grid = await html`<div style=\"\n              background: #fff;\n              margin: 0;\n              border: none ;\n              display: grid;\n              width: ${screen.width};\n              grid-template-areas: \n                'a b c'\n                'd d d'\n                'e e e'\n                ;\n              grid-gap: 10px;\n            \">\n              <div name=\"a\" style=\"grid-area: a; position: relative;\">${viewof quantile}</div>\n              <div name=\"b\" style=\"grid-area: b; position: relative;\"><div class=\"textstyled\">Accuracy: ${Accuracy}</div></div>\n              <div name=\"c\" style=\"grid-area: c; position: relative;\"><div class=\"textstyled\">Seuil: ${Seuil}</div></div>\n              <div name=\"d\" style=\"grid-area: d; position: relative;\">${distrib}</div>\n              <div name=\"e\" style=\"grid-area: e; position: relative;\">${distrib_adjusted}</div>\n            </div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-5","inline":false,"source":"Plot.barY(count_errors.slice(0, 15), {\n  x: \"value\",\n  y: \"frequency\",\n  sort: { x: \"-y\" },\n  tip: true\n}).plot()\n"},{"methodName":"interpret","cellName":"ojs-cell-6","inline":false,"source":"viewof search = Inputs.search(subset.filter((d) => 1 - d.Result))\n"},{"methodName":"interpret","cellName":"ojs-cell-7","inline":false,"source":"WrongPredictions = Inputs.table(search)\n"},{"methodName":"interpret","cellName":"ojs-cell-8","inline":false,"source":"grid2 = await html`<div style=\"\n              background: #fff;\n              margin: 0;\n              border: none ;\n              display: grid;\n              width: ${screen.width};\n              grid-template-areas: \n                'a'\n                'b'\n                'c'\n                ;\n              grid-gap: 10px;\n            \">\n              <div name=\"a\" style=\"grid-area: a; position: relative;\">${codif_seuil}</div>\n              <div name=\"b\" style=\"grid-area: b; position: relative;\">${acc_seuil}</div>\n              <div name=\"c\" style=\"grid-area: c; position: relative;\">${acc_codif}</div>\n            </div>`\n"},{"methodName":"interpret","cellName":"ojs-cell-9","inline":false,"source":"viewof quantile = Inputs.range([0, 100], {label: \"Taux de classification automatique\", step: 1, value: 80})\n"},{"methodName":"interpret","cellName":"ojs-cell-10","inline":false,"source":"distrib = Plot.plot({\n  round: true,\n  width: screen.width * 0.7,\n  color: { scheme: \"BuRd\", legend: true },\n  marks: [\n    Plot.rectY(\n      processed_response,\n      Plot.binX(\n        { y: \"count\" },\n        { x: \"IC\", fill: \"Result\", mixBlendMode: \"multiply\", tip: true }\n      )\n    ),\n    Plot.ruleY([0]),\n    Plot.ruleX([Seuil], { strokeWidth: 2, tip: true })\n  ]\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-11","inline":false,"source":"distrib_adjusted = Plot.plot({\n  width: screen.width * 0.7,\n  y: { percent: true },\n  color: { scheme: \"BuRd\", legend: true },\n  marks: [\n    Plot.rectY(\n      processed_response,\n      Plot.normalizeY(\n        \"sum\", // normalize each series by the sum per series\n        Plot.binX(\n          { y2: \"count\" }, // disable implicit stack transform\n          { x: \"IC\", fill: \"Result\", mixBlendMode: \"multiply\", tip: true }\n        )\n      )\n    ),\n    Plot.ruleY([0]),\n    Plot.ruleX([Seuil], { strokeWidth: 2, tip: true })\n  ]\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-12","inline":false,"source":"Seuil = round(\n  d3.quantile(\n    processed_response.map((d) => d.IC),\n    1 - quantile / 100\n  ),\n  2\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-13","inline":false,"source":"Accuracy = round(d3.mean(subset.map((d) => d.Result)) * 100, 2)\n"},{"methodName":"interpret","cellName":"ojs-cell-14","inline":false,"source":"codif_seuil = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Taux de classification automatique (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Seuil choisi\"\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"seuils\",\n      y: \"codif_auto\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"seuils\",\n        y: \"codif_auto\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].seuils,\n      y: ic_tx_classif[60].codif_auto,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-15","inline":false,"source":"acc_seuil = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Accuracy (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Seuil choisi\"\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"seuils\",\n      y: \"accuracies\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"seuils\",\n        y: \"accuracies\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].seuils,\n      y: ic_tx_classif[60].accuracies,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-16","inline":false,"source":"acc_codif = Plot.plot({\n  grid: true,\n  y: {\n    label: \"↑ Accuracy (%)\",\n    percent: true\n  },\n  x: {\n    label: \"→ Taux de classification automatique (%)\",\n    percent: true\n  },\n  marks: [\n    Plot.line(ic_tx_classif, {\n      x: \"codif_auto\",\n      y: \"accuracies\",\n      stroke: \"black\",\n      strokeWidth: 2\n    }),\n    Plot.tip(\n      ic_tx_classif,\n      Plot.pointer({\n        x: \"codif_auto\",\n        y: \"accuracies\",\n        title: (d) => `Accuracy : ${round(d.accuracies, 2)}\\nSeuil : ${round(\n          d.seuils,\n          2\n        )}\\nTaux classification automatique: \n${round(d.codif_auto * 100, 2)} %`\n      })\n    ),\n    Plot.tip([`Seuil à 0.6`], {\n      x: ic_tx_classif[60].codif_auto,\n      y: ic_tx_classif[60].accuracies,\n      anchor: \"bottom\"\n    })\n  ],\n  color: { legend: true }\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-17","inline":false,"source":"ic_tx_classif = {\n  const newArray = [];\n  for (let i = 0; i <= 1.01; i += 0.01) {\n    let seuil = round(i, 2);\n    newArray.push({\n      seuils: seuil,\n      codif_auto:\n        processed_response.filter((d) => d.IC > seuil).length /\n        processed_response.length,\n      accuracies: get_accuracies_from_threshold(processed_response, i, {\n        round_int: 15\n      })\n    });\n  }\n  return newArray;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-18","inline":false,"source":"data = db.query(\n  `\nSELECT text_description, type_, nature, surface, event, code\nFROM liasses\n`\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-19","inline":false,"source":"transformedData = data.reduce((acc, obj) => {\n  for (const [key, value] of Object.entries(obj)) {\n    if (!acc.hasOwnProperty(key)) {\n      acc[key] = [];\n    }\n    acc[key].push(value);\n  }\n  return acc;\n}, {})\n"},{"methodName":"interpret","cellName":"ojs-cell-20","inline":false,"source":"db = DuckDBClient.of({\n  liasses: await csvfile.csv()\n})\n"},{"methodName":"interpret","cellName":"ojs-cell-21","inline":false,"source":"processed_response = Object.keys(response.IC).map((key) => ({\n  IC: response.IC[key] == 1 ? response.IC[key] - 1e-16 : response.IC[key],\n  Probability: response.Probability[key],\n  Prediction: response.Prediction[key],\n  Code: response.Code[key],\n  Result: response.Result[key],\n  Lib: response.Lib[key]\n}))\n"},{"methodName":"interpret","cellName":"ojs-cell-22","inline":false,"source":"response = queryBatchApi(username, password, data)\n"},{"methodName":"interpret","cellName":"ojs-cell-23","inline":false,"source":"subset = processed_response.filter((d) => d.IC > Seuil)\n"},{"methodName":"interpret","cellName":"ojs-cell-24","inline":false,"source":"quantiles = Array.from({ length: 101 }, (_, i) => i/100) // Array with quantile values from 0 to 1\n"},{"methodName":"interpret","cellName":"ojs-cell-25","inline":false,"source":"seuils = quantiles.map((quantile) =>\n  d3.quantile(\n    processed_response.map((d) => d.IC),\n    1 - quantile\n  )\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-26","inline":false,"source":"count_errors = valueCounts(\n  subset.filter((d) => 1 - d.Result).map((d) => d.Code)\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-27","inline":false,"source":"async function queryBatchApi(username, password, data) {\n  const url = \"https://codification-ape.lab.sspcloud.fr/evaluation\";\n\n  // Create the request body\n  const request_body = data.reduce((acc, obj) => {\n    for (const [key, value] of Object.entries(obj)) {\n      if (!acc.hasOwnProperty(key)) {\n        acc[key] = [];\n      }\n      acc[key].push(value);\n    }\n    return acc;\n  }, {});\n\n  const response = await fetch(url, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      Authorization: `Basic ${btoa(`${username}:${password}`)}`\n    },\n    body: JSON.stringify(request_body)\n  });\n\n  if (response.ok) {\n    return response.json();\n  } else if (response.status === 400) {\n    console.log((await response.json()).detail);\n  } else {\n    console.log(\"Error occurred while querying the API.\");\n    return response;\n  }\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-28","inline":false,"source":"function get_accuracies_from_threshold(\n  data,\n  threshold,\n  { round_int = 2 } = {}\n) {\n  let acc = d3.mean(data.filter((d) => d.IC > threshold).map((d) => d.Result));\n  acc = acc === undefined ? 1 : round(acc, round_int);\n  return acc;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-29","inline":false,"source":"function round(d, int) {\n  return Math.round(d * 10 ** int) / 10 ** int;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-30","inline":false,"source":"function valueCounts(array, { freq = false } = {}) {\n  const counts = {};\n\n  for (let i = 0; i < array.length; i++) {\n    const value = array[i];\n\n    if (counts[value]) {\n      counts[value]++;\n    } else {\n      counts[value] = 1;\n    }\n  }\n\n  const result = [];\n\n  const arrayLength = array.length;\n  for (const value in counts) {\n    const frequency = freq ? counts[value] / arrayLength : counts[value];\n    result.push({ value: value, frequency: frequency });\n  }\n  result.sort((a, b) => b.frequency - a.frequency); // Sort by frequency in descending order\n\n  return result;\n}\n"},{"methodName":"interpret","cellName":"ojs-cell-31","inline":false,"source":"Plot = require(\"https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.8/dist/plot.umd.min.js\")\n"},{"methodName":"interpretQuiet","source":"shinyInput('username')"},{"methodName":"interpretQuiet","source":"shinyInput('password')"},{"methodName":"interpretQuiet","source":"shinyInput('csvfile')"},{"methodName":"interpretQuiet","source":"shinyInput('search')"},{"methodName":"interpretQuiet","source":"shinyInput('quantile')"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -795,10 +836,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -808,8 +848,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -822,6 +871,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -865,6 +968,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -952,19 +1056,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</div>   
+    <div class="nav-footer-left">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../LICENSE.md">License</a>
+    <a class="nav-link" href="../LICENSE.md">
+<p>License</p>
+</a>
   </li>  
 </ul>
     </div>
   </div>
 </footer>
+
 
 
 
