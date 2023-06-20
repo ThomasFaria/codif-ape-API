@@ -30,9 +30,10 @@ grid = await html`<div style="
               border: none ;
               display: grid;
               width: ${screen.width};
-              grid-template-areas:
+              grid-template-areas: 
                 'a b c'
                 'd d d'
+                'e e e'
                 ;
               grid-gap: 10px;
             ">
@@ -40,6 +41,7 @@ grid = await html`<div style="
               <div name="b" style="grid-area: b; position: relative;"><div class="textstyled">Accuracy: ${Accuracy}</div></div>
               <div name="c" style="grid-area: c; position: relative;"><div class="textstyled">Seuil: ${Seuil}</div></div>
               <div name="d" style="grid-area: d; position: relative;">${distrib}</div>
+              <div name="e" style="grid-area: e; position: relative;">${distrib_adjusted}</div>
             </div>`
 ```
 
@@ -88,6 +90,27 @@ distrib = Plot.plot({
 })
 ```
 
+```{ojs}
+distrib_adjusted = Plot.plot({
+  width: screen.width * 0.7,
+  y: { percent: true },
+  color: { scheme: "BuRd", legend: true },
+  marks: [
+    Plot.rectY(
+      processed_response,
+      Plot.normalizeY(
+        "sum", // normalize each series by the sum per series
+        Plot.binX(
+          { y2: "count" }, // disable implicit stack transform
+          { x: "IC", fill: "Result", mixBlendMode: "multiply", tip: true }
+        )
+      )
+    ),
+    Plot.ruleY([0]),
+    Plot.ruleX([Seuil], { strokeWidth: 2, tip: true })
+  ]
+})
+```
 
 ```{ojs}
 Seuil = round(
@@ -115,7 +138,11 @@ Plot.barY(count_errors.slice(0, 15), {
 ```
 
 ```{ojs}
-WrongPredictions = Inputs.table(subset.filter((d) => 1 - d.Result))
+viewof search = Inputs.search(subset.filter((d) => 1 - d.Result))
+```
+
+```{ojs}
+WrongPredictions = Inputs.table(search)
 ```
 
 
@@ -291,7 +318,7 @@ db = DuckDBClient.of({
 
 ```{ojs}
 processed_response = Object.keys(response.IC).map((key) => ({
-  IC: response.IC[key] > 1 ? 1 - 1e-16 : response.IC[key],
+  IC: response.IC[key] == 1 ? response.IC[key] - 1e-16 : response.IC[key],
   Probability: response.Probability[key],
   Prediction: response.Prediction[key],
   Code: response.Code[key],
