@@ -45,6 +45,29 @@ grid = await html`<div style="
             </div>`
 ```
 
+
+## Analyse des erreurs
+
+```{ojs}
+Plot.barY(count_errors.slice(0, 15), {
+  x: "value",
+  y: "frequency",
+  sort: { x: "-y" },
+  tip: true
+}).plot()
+```
+
+```{ojs}
+viewof search = Inputs.search(subset.filter((d) => 1 - d.Result))
+```
+
+```{ojs}
+WrongPredictions = Inputs.table(search)
+```
+
+## Impact du seuil de reprise sur la performance et le taux 
+
+
 ```{ojs}
 grid2 = await html`<div style="
               background: #fff;
@@ -65,7 +88,7 @@ grid2 = await html`<div style="
             </div>`
 ```
 
-
+<!-- Plots  -->
 
 ```{ojs}
 viewof quantile = Inputs.range([0, 100], {label: "Taux de classification automatique", step: 1, value: 80})
@@ -125,28 +148,6 @@ Seuil = round(
 ```{ojs}
 Accuracy = round(d3.mean(subset.map((d) => d.Result)) * 100, 2)
 ```
-
-## Analyse des erreurs
-
-```{ojs}
-Plot.barY(count_errors.slice(0, 15), {
-  x: "value",
-  y: "frequency",
-  sort: { x: "-y" },
-  tip: true
-}).plot()
-```
-
-```{ojs}
-viewof search = Inputs.search(subset.filter((d) => 1 - d.Result))
-```
-
-```{ojs}
-WrongPredictions = Inputs.table(search)
-```
-
-
-## Impact du seuil de reprise sur la performance et le taux 
 
 ```{ojs}
 codif_seuil = Plot.plot({
