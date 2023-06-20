@@ -35,3 +35,24 @@ $primary: #b83352 ;
     padding-bottom: 0px;
     text-align: center;
 }
+
+.rounded-cell {
+  border-radius: 10px;
+  background-color: #5f9c5f;
+}
+
+th, td {
+  text-align: center;
+}
+
+.passed {
+  background-color: #5f9c5f;
+  color: white;
+  border-radius: 10px;
+}
+
+.failed {
+  background-color: #fc4747;
+  color: white;
+  border-radius: 10px;
+}

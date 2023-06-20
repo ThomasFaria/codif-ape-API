@@ -3,22 +3,207 @@ title: "Analyse du modèle de codification de l'APE"
 ---
 
 
+```{ojs}
+md`
+Le modèle en cours d'évaluation est le modèle **${infos.Model_name}**, version **${infos.Model_version}**.
+`
+```
+
+## Performance du modèle
 
 ```{ojs}
-function color_accepted(d) {
-  const backgroundColor = d === "Accepted" ? "#5f9c5f" : "#fc4747";
-  return html`<div style="background: ${backgroundColor};text-align:right;padding:2px 5px;">${d}</div>`;
+
+html`
+<table>
+  <tr>
+    <th></th>
+    <th>Level 1</th>
+    <th>Level 2</th>
+    <th>Level 3</th>
+    <th>Level 4</th>
+    <th>Level 5</th>
+  </tr>
+  <tr>
+    <td><strong>GU</strong></td>
+    <td>${round(infos.Metrics.accuracy_level_1_gu*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_2_gu*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_3_gu*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_4_gu*100, 2)}%</td>
+    <td class="rounded-cell"><strong>${round(infos.Metrics.accuracy_level_5_gu*100, 2)}%</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Train</strong></td>
+    <td>${round(infos.Metrics.accuracy_level_1*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_2*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_3*100, 2)}%</td>
+    <td>${round(infos.Metrics.accuracy_level_4*100, 2)}%</td>
+    <td class="rounded-cell"><strong>${round(infos.Metrics.accuracy_level_5*100, 2)}%</strong></td>
+  </tr>
+</table>
+`
+```
+
+## Résultats du modèle sur les tests
+
+```{ojs}
+html`
+<table> 
+  <tr>
+    <th>Test</th>
+    <th>Result</th>
+    <th>IC</th>
+  </tr>
+  <tr>
+    <td>Test 1</td>
+    <td class="${infos.Metrics['Test 1 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 1 - Result']}</td>
+    <td>${round(infos.Metrics['Test 1 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 2</td>
+    <td class="${infos.Metrics['Test 2 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 2 - Result']}</td>
+    <td>${round(infos.Metrics['Test 2 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 3</td>
+    <td class="${infos.Metrics['Test 3 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 3 - Result']}</td>
+    <td>${round(infos.Metrics['Test 3 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 4</td>
+    <td class="${infos.Metrics['Test 4 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 4 - Result']}</td>
+    <td>${round(infos.Metrics['Test 4 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 5</td>
+    <td class="${infos.Metrics['Test 5 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 5 - Result']}</td>
+    <td>${round(infos.Metrics['Test 5 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 6</td>
+    <td class="${infos.Metrics['Test 6 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 6 - Result']}</td>
+    <td>${round(infos.Metrics['Test 6 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 7</td>
+    <td class="${infos.Metrics['Test 7 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 7 - Result']}</td>
+    <td>${round(infos.Metrics['Test 7 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 8</td>
+    <td class="${infos.Metrics['Test 8 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 8 - Result']}</td>
+    <td>${round(infos.Metrics['Test 8 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 9</td>
+    <td class="${infos.Metrics['Test 9 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 9 - Result']}</td>
+    <td>${round(infos.Metrics['Test 9 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 10</td>
+    <td class="${infos.Metrics['Test 10 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 10 - Result']}</td>
+    <td>${round(infos.Metrics['Test 10 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 11</td>
+    <td class="${infos.Metrics['Test 11 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 11 - Result']}</td>
+    <td>${round(infos.Metrics['Test 11 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 12</td>
+    <td class="${infos.Metrics['Test 12 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 12 - Result']}</td>
+    <td>${round(infos.Metrics['Test 12 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 13</td>
+    <td class="${infos.Metrics['Test 13 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 13 - Result']}</td>
+    <td>${round(infos.Metrics['Test 13 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 14</td>
+    <td class="${infos.Metrics['Test 14 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 14 - Result']}</td>
+    <td>${round(infos.Metrics['Test 14 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 15</td>
+    <td class="${infos.Metrics['Test 15 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 15 - Result']}</td>
+    <td>${round(infos.Metrics['Test 15 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 16</td>
+    <td class="${infos.Metrics['Test 16 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 16 - Result']}</td>
+    <td>${round(infos.Metrics['Test 16 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 17</td>
+    <td class="${infos.Metrics['Test 17 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 17 - Result']}</td>
+    <td>${round(infos.Metrics['Test 17 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 18</td>
+    <td class="${infos.Metrics['Test 18 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 18 - Result']}</td>
+    <td>${round(infos.Metrics['Test 18 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 19</td>
+    <td class="${infos.Metrics['Test 19 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 19 - Result']}</td>
+    <td>${round(infos.Metrics['Test 19 - IC'], 4)}</td>
+  </tr>
+  <tr>
+    <td>Test 20</td>
+    <td class="${infos.Metrics['Test 20 - Result'].toLowerCase() === 'passed' ? 'passed' : 'failed'}">${infos.Metrics['Test 20 - Result']}</td>
+    <td>${round(infos.Metrics['Test 20 - IC'], 4)}</td>
+  </tr>
+</table>
+`
+```
+ 
+```{ojs}
+function round(d, int) {
+  return Math.round(d * 10 ** int) / 10 ** int;
 }
 ```
 
-<!-- viewof final_table = Inputs.table(
-243	  x,
-244	  {format: {
-245	      "similarity": d => color_accepted(d)
-246	  }
-247	  }) -->
 ## Licence {.unnumbered}
 
 This work is licensed under the [Apache License 2.0](http://www.apache.org/licenses/).
 
 See the code on [Github](https://github.com/ThomasFaria/codif-ape-API).
+
+
+```{python}
+import requests
+import pandas as pd
+import os
+```
+
+```{python}
+def query_info_model(username: str, password: str):
+    url = "https://codification-ape.lab.sspcloud.fr"
+    
+    response = requests.get(url, auth=(username, password))
+
+    if response.status_code == 200:
+        return response.json()
+    elif response.status_code == 400:
+        print(response.json()["detail"])
+    else:
+        print("Error occurred while querying the API.")
+        return None
+```
+
+```{python}
+username = "codification-ape" #os.getenv("API_USERNAME")
+password = "codification-sirene4" #os.getenv("API_PASSWORD")
+result = query_info_model(username, password)
+ojs_define(infos = result)
+```
+
+```{ojs}
+html`
+<style>
+  table {
+    width: 100%;
+  }
+</style>
+`
+```
